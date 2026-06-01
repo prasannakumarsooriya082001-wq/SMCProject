@@ -6,6 +6,8 @@ package smcproject.AddProduct;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,23 +36,13 @@ public class AddProductController implements Initializable {
     @FXML
     private TextField category;
     @FXML
-    private TextField MaterialName;
-    @FXML
-    private DatePicker date;
-    @FXML
-    private TextField quantity;
-    @FXML
-    private TextField unit;
-    @FXML
     private TextField amount;
-    @FXML
-    private TextField brandName;
-    @FXML
-    private TextField subCategory;
     @FXML
     private TextArea stock;
     @FXML
     private TextArea status;
+    @FXML
+    private Label message;
 
     /**
      * Initializes the controller class.
@@ -60,6 +52,30 @@ public class AddProductController implements Initializable {
         // TODO
     }    
 
+    @FXML
+    private void addProduct(ActionEvent event) throws ClassNotFoundException, SQLException 
+    {
+        if (amount.getText().trim().isEmpty()|| stock.getText().trim().isEmpty()) {
+            message.setText("Enter all details");
+            return;
+        }
+        String productname = productName.getText();
+        String cate =  category.getText();
+        double price = Double.parseDouble(amount.getText());
+        int sto = Integer.parseInt(stock.getText());
+        String stat = status.getText();
+        
+        
+        
+        AddProductModel am = new AddProductModel(productname, cate, price, sto, stat);
+        
+        AddProductService as = new AddProductService();
+        String mes = as.createuser(am);
+        
+        message.setText(mes);
+
+    
+    }
     @FXML
     private void profile(ActionEvent event) throws IOException 
     {
@@ -239,9 +255,7 @@ public class AddProductController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void addProduct(ActionEvent event) {
-    }
+    
 
     @FXML
     private void back(ActionEvent event) throws IOException 

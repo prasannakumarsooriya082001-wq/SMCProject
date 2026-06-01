@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smcproject.OrdersPage1.OrdersPage1Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smcproject.OrdersPage1.OrdersPage1Controller">
    <left>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: #2C1F0E;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -314,7 +314,7 @@
                <children>
                   <Label alignment="CENTER" text="Orders">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <StackPane.margin>
                         <Insets left="-206.0" top="-39.0" />
@@ -351,7 +351,7 @@
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search anything ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
+                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search " style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
                            <HBox.margin>
                               <Insets top="-5.0" />
                            </HBox.margin>
@@ -450,65 +450,25 @@
                </VBox.margin>
             </HBox>
             
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="990.0" style="-fx-background-color: ffffff; -fx-background-radius: 12; -fx-border-radius: 12;">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="847.0" style="-fx-background-color: ffffff; -fx-background-radius: 0 0 10 10; -fx-border-radius: 0 0 10 10;">
                <VBox.margin>
                   <Insets left="27.0" top="50.0" />
                </VBox.margin>
                <children>
-                  <TableView layoutX="1.0" layoutY="2.4" prefHeight="364.0" prefWidth="990.0" style="-fx-background-radius: 10 0 0 0; -fx-border-radius: 10 0 0 0;" AnchorPane.topAnchor="2.0">
+                  <TableView fx:id="orderTable" editable="true" fixedCellSize="60.0" layoutX="1.0" layoutY="2.4" prefHeight="364.0" prefWidth="843.0" style="-fx-alignment: center; -fx-font-size: 16;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="orderId" minWidth="-Infinity" prefWidth="210.0" text="Order ID" />
-                      <TableColumn fx:id="customer" minWidth="-Infinity" prefWidth="190.0" text="Customer" />
-                        <TableColumn fx:id="amount" minWidth="-Infinity" prefWidth="160.0" text="Amount" />
-                        <TableColumn fx:id="date" minWidth="-Infinity" prefWidth="130.0" text="Date" />
-                        <TableColumn fx:id="status" minWidth="-Infinity" prefWidth="150.0" text=" Status" />
-                        <TableColumn fx:id="actions" minWidth="-Infinity" prefWidth="150.0" text=" Actions" />
+                      <TableColumn fx:id="orderId" minWidth="-Infinity" prefWidth="210.0" style="-fx-alignment: center; -fx-font-size: 16;" text="Order ID" />
+                      <TableColumn fx:id="customer" minWidth="-Infinity" prefWidth="190.0" style="-fx-alignment: center; -fx-font-size: 16;" text="Customer" />
+                        <TableColumn fx:id="amount" minWidth="-Infinity" prefWidth="160.0" style="-fx-alignment: center; -fx-font-size: 16;" text="Amount" />
+                        <TableColumn fx:id="date" minWidth="-Infinity" prefWidth="130.0" style="-fx-alignment: center; -fx-font-size: 16;" text="Date" />
+                        <TableColumn fx:id="status" minWidth="-Infinity" prefWidth="153.0" style="-fx-alignment: center; -fx-font-size: 16;" text=" Status" />
                     </columns>
                   </TableView>
-                  <Label layoutX="90.0" layoutY="384.0" text="Showing 1–5 of 30 orders" textFill="#7a5c43" AnchorPane.rightAnchor="751.0" AnchorPane.topAnchor="383.0">
+                  <Label layoutX="90.0" layoutY="384.0" text="Showing 1–5 of 30 orders" textFill="#7a5c43" AnchorPane.rightAnchor="620.0" AnchorPane.topAnchor="383.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" layoutX="510.0" layoutY="364.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="419.0" spacing="10.0" AnchorPane.leftAnchor="565.0">
-                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#backward" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="&lt;">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page1" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="1">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page2" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="2">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page3" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="3">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page4" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="4">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page5" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="5">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#forward" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="&gt;">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
                </children>
             </AnchorPane>
          </children>

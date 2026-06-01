@@ -6,7 +6,13 @@ package smcproject.DashboardPage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +22,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import smcproject.CustomerPage.CustomerPageController;
 
 
 public class DashboardPageController implements Initializable {
@@ -27,17 +36,21 @@ public class DashboardPageController implements Initializable {
     @FXML
     private TextField search;
     @FXML
-    private TableColumn<?, ?> orderId;
+    private TableColumn<DashboardModel, Integer> orderId;
     @FXML
-    private TableColumn<?, ?> customer;
+    private TableColumn<DashboardModel, String> customer;
     @FXML
-    private TableColumn<?, ?> amount;
+    private TableColumn<DashboardModel, Double> amount;
     @FXML
-    private TableColumn<?, ?> status;
+    private TableColumn<DashboardModel, String> status;
     @FXML
-    private TableColumn<?, ?> date;
+    private TableColumn<DashboardModel, Date> date;
     @FXML
     private PieChart overview;
+    @FXML
+    private TableView<DashboardModel> orderTable;
+    
+    private DashboardService ds = new DashboardService();
 
     @FXML
     private void dashboardBtn1(ActionEvent event)
@@ -210,7 +223,25 @@ public class DashboardPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     
     {
+        orderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        customer.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+
         
+        ObservableList ol = null;
+        
+        try {
+            ol = FXCollections.observableArrayList(ds.getAllOrders());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        orderTable.setItems(ol);
     }    
 
     @FXML
@@ -234,7 +265,19 @@ public class DashboardPageController implements Initializable {
     }
 
     @FXML
-    private void viewAllOrder(ActionEvent event) {
+    private void viewAllOrder(ActionEvent event) throws IOException
+    {
+        Parent root =
+        FXMLLoader.load(
+        getClass().getResource("/smcproject/OrdersPage1/OrdersPage1.fxml"));
+
+        Stage stage =
+        (Stage)((Node)event.getSource())
+        .getScene()
+        .getWindow();
+
+        stage.setScene(new Scene(root));
+        stage.show();
     }
     
 }

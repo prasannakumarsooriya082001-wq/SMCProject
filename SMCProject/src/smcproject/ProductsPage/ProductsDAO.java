@@ -36,25 +36,22 @@ public class ProductsDAO
         
         List list = new ArrayList();
         
-        PreparedStatement psmt = conn.prepareStatement("Select * from products");
+        PreparedStatement psmt = conn.prepareStatement("Select product_id,product_name,category,price,stock,status from product");
         ResultSet rs = psmt.executeQuery();
         
         while(rs.next())
         {
             ProductsModel pm = new ProductsModel();
+            pm.setProductId(rs.getInt("product_id"));
             pm.setProductName(rs.getString("product_name"));
             pm.setCategory(rs.getString("category"));
             pm.setPrice(rs.getDouble("price"));
-            pm.setStock(rs.getString("stock"));
+            pm.setStock(rs.getInt("stock"));
             pm.setStatus(rs.getString("status"));
             
             list.add(pm);
             
         }
-        
-        
-        
-        
         return list;
     }
 }

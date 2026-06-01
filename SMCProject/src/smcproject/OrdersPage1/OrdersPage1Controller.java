@@ -6,7 +6,13 @@ package smcproject.OrdersPage1;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.CustomerPage.CustomerPageController;
 
 /**
  * FXML Controller class
@@ -30,17 +39,19 @@ public class OrdersPage1Controller implements Initializable {
     @FXML
     private TextField searchProduct;
     @FXML
-    private TableColumn<?, ?> orderId;
+    private TableColumn<OrdersModel,Integer> orderId;
     @FXML
-    private TableColumn<?, ?> customer;
+    private TableColumn<OrdersModel, String> customer;
     @FXML
-    private TableColumn<?, ?> amount;
+    private TableColumn<OrdersModel, Double> amount;
     @FXML
-    private TableColumn<?, ?> date;
+    private TableColumn<OrdersModel, Date> date;
     @FXML
-    private TableColumn<?, ?> status;
+    private TableColumn<OrdersModel, String> status;
     @FXML
-    private TableColumn<?, ?> actions;
+    private TableView<OrdersModel> orderTable;
+    
+    private OrdersService os = new OrdersService();
 
     @FXML
     private void dashboardBtn1(ActionEvent event)
@@ -204,8 +215,27 @@ public class OrdersPage1Controller implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        orderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        customer.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        date.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        
+        ObservableList ol = null;
+        
+        try {
+            ol = FXCollections.observableArrayList(os.getAllOrders());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        orderTable.setItems(ol);
     }    
 
     @FXML
@@ -228,13 +258,6 @@ public class OrdersPage1Controller implements Initializable {
     private void notify(ActionEvent event) {
     }
 
-    @FXML
-    private void menu1(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu2(ActionEvent event) {
-    }
 
     @FXML
     private void newOrder(ActionEvent event) throws IOException 
@@ -254,32 +277,5 @@ public class OrdersPage1Controller implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void backward(ActionEvent event) {
-    }
-
-    @FXML
-    private void page1(ActionEvent event) {
-    }
-
-    @FXML
-    private void page2(ActionEvent event) {
-    }
-
-    @FXML
-    private void page3(ActionEvent event) {
-    }
-
-    @FXML
-    private void page4(ActionEvent event) {
-    }
-
-    @FXML
-    private void page5(ActionEvent event) {
-    }
-
-    @FXML
-    private void forward(ActionEvent event) {
-    }
     
 }

@@ -6,7 +6,12 @@ package smcproject.CustomerPage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +20,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.ProductsPage.ProductsPageController;
 
 /**
  * FXML Controller class
@@ -30,15 +38,15 @@ public class CustomerPageController implements Initializable {
     @FXML
     private TextField searchProduct;
     @FXML
-    private TableColumn<?, ?> customerName;
+    private TableColumn<CustomerModel, String> customerName;
     @FXML
-    private TableColumn<?, ?> email;
+    private TableColumn<CustomerModel, String> email;
     @FXML
-    private TableColumn<?, ?> phone;
+    private TableColumn<CustomerModel, String> phone;
     @FXML
-    private TableColumn<?, ?> orders;
+    private TableColumn<CustomerModel, String> orders;
     @FXML
-    private TableColumn<?, ?> actions;
+    private TableView<CustomerModel> tableview;
 
    
     @FXML
@@ -201,10 +209,28 @@ public class CustomerPageController implements Initializable {
     }
     
     
-    
+    private CustomerService cs = new CustomerService();
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        customerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        orders.setCellValueFactory(new PropertyValueFactory<>("orders"));
+        
+        
+        ObservableList ol = null;
+        
+        try {
+            ol = FXCollections.observableArrayList(cs.getAllCustomers());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        tableview.setItems(ol);
     }    
 
     @FXML
@@ -243,32 +269,5 @@ public class CustomerPageController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void backward(ActionEvent event) {
-    }
-
-    @FXML
-    private void page1(ActionEvent event) {
-    }
-
-    @FXML
-    private void page2(ActionEvent event) {
-    }
-
-    @FXML
-    private void page3(ActionEvent event) {
-    }
-
-    @FXML
-    private void page4(ActionEvent event) {
-    }
-
-    @FXML
-    private void page5(ActionEvent event) {
-    }
-
-    @FXML
-    private void frontward(ActionEvent event) {
-    }
     
 }

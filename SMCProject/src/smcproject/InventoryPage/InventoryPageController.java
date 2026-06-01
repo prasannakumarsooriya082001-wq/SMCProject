@@ -6,7 +6,12 @@ package smcproject.InventoryPage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +20,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.CustomerPage.CustomerPageController;
 
 /**
  * FXML Controller class
@@ -28,19 +36,19 @@ public class InventoryPageController implements Initializable {
     @FXML
     private TextField search;
     @FXML
-    private TextField searchProducts;
+    private TableColumn<InventoryModel, String> materialName;
     @FXML
-    private TableColumn<?, ?> materialName;
+    private TableColumn<InventoryModel, String> category;
     @FXML
-    private TableColumn<?, ?> category;
+    private TableColumn<InventoryModel, String> unit;
     @FXML
-    private TableColumn<?, ?> unit;
+    private TableColumn<InventoryModel, Integer>stock;
     @FXML
-    private TableColumn<?, ?> stock;
+    private TableColumn<InventoryModel, String> status;
     @FXML
-    private TableColumn<?, ?> status;
-    @FXML
-    private TableColumn<?, ?> actions;
+    private TableView<InventoryModel> inventoryTable;
+    
+    private InventoryService is = new InventoryService();
 
     
     @FXML
@@ -204,8 +212,27 @@ public class InventoryPageController implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        materialName.setCellValueFactory(new PropertyValueFactory<>("material_name"));
+        category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        unit.setCellValueFactory(new PropertyValueFactory<>("unit"));
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        
+        ObservableList ol = null;
+        
+        try {
+            ol = FXCollections.observableArrayList(is.getAllMaterials());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        inventoryTable.setItems(ol);
     }    
 
     @FXML
@@ -244,36 +271,5 @@ public class InventoryPageController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void menu1(ActionEvent event) {
-    }
-
-    @FXML
-    private void backward(ActionEvent event) {
-    }
-
-    @FXML
-    private void page1(ActionEvent event) {
-    }
-
-    @FXML
-    private void page2(ActionEvent event) {
-    }
-
-    @FXML
-    private void page3(ActionEvent event) {
-    }
-
-    @FXML
-    private void page4(ActionEvent event) {
-    }
-
-    @FXML
-    private void page5(ActionEvent event) {
-    }
-
-    @FXML
-    private void forward(ActionEvent event) {
-    }
     
 }

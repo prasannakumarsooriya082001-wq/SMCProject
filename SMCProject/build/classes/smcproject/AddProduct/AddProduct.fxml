@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -369,9 +368,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="1011.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;">
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="670.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;">
                <VBox.margin>
-                  <Insets left="36.0" top="18.0" />
+                  <Insets left="250.0" top="18.0" />
                </VBox.margin>
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Product Name">
@@ -379,12 +378,12 @@
                         <Font size="14.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="-759.0" top="-314.0" />
+                        <Insets left="-215.0" top="-314.0" />
                      </StackPane.margin>
                   </Label>
                   <TextField fx:id="productName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0">
                      <StackPane.margin>
-                        <Insets left="-763.0" top="-230.0" />
+                        <Insets left="-217.0" top="-230.0" />
                      </StackPane.margin>
                   </TextField>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Category">
@@ -392,25 +391,12 @@
                         <Font size="14.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="-225.0" top="-314.0" />
+                        <Insets left="335.0" top="-314.0" />
                      </StackPane.margin>
                   </Label>
                   <TextField fx:id="category" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0">
                      <StackPane.margin>
-                        <Insets left="-225.0" top="-230.0" />
-                     </StackPane.margin>
-                  </TextField>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Material Name">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="-753.0" top="-152.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <TextField fx:id="MaterialName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0">
-                     <StackPane.margin>
-                        <Insets left="-760.0" top="-70.0" />
+                        <Insets left="333.0" top="-230.0" />
                      </StackPane.margin>
                   </TextField>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Stock">
@@ -418,67 +404,20 @@
                         <Font size="14.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="-751.0" top="22.0" />
+                        <Insets left="-217.0" top="-150.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="200.0" text="Brand Name">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="310.0" top="-314.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="200.0" text="Date">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="746.0" top="-314.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <DatePicker fx:id="date" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="42.0" style="-fx-background-color: #e3d7cf;">
-                     <StackPane.margin>
-                        <Insets left="716.0" top="-230.0" />
-                     </StackPane.margin>
-                  </DatePicker>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Quantity">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="-222.0" top="-153.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <TextField fx:id="quantity" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0">
-                     <StackPane.margin>
-                        <Insets left="-221.0" top="-70.0" />
-                     </StackPane.margin>
-                  </TextField>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="135.0" text="Unit">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="752.0" top="-154.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <TextField fx:id="unit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="102.0">
-                     <StackPane.margin>
-                        <Insets left="718.0" top="-71.0" />
-                     </StackPane.margin>
-                  </TextField>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Amount">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="342.0" top="21.0" />
+                        <Insets left="50.0" top="21.0" />
                      </StackPane.margin>
                   </Label>
                   <TextField fx:id="amount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="194.0">
                      <StackPane.margin>
-                        <Insets left="303.0" top="110.0" />
+                        <Insets left="14.0" top="110.0" />
                      </StackPane.margin>
                   </TextField>
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addProduct" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: #c4965a; -fx-background-radius: 10; -fx-border-radius: 10;" text="Add Product" textFill="WHITE">
@@ -496,27 +435,9 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="brandName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="194.0">
-                     <StackPane.margin>
-                        <Insets left="308.0" top="-230.0" />
-                     </StackPane.margin>
-                  </TextField>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Sub Category">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="344.0" top="-153.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <TextField fx:id="subCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0">
-                     <StackPane.margin>
-                        <Insets left="345.0" top="-70.0" />
-                     </StackPane.margin>
-                  </TextField>
                   <TextArea fx:id="stock" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0" style="-fx-background-color: #e3d7cf;">
                      <StackPane.margin>
-                        <Insets left="-760.0" top="110.0" />
+                        <Insets left="-217.0" top="-63.0" />
                      </StackPane.margin>
                   </TextArea>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="230.0" text="Status">
@@ -524,14 +445,22 @@
                         <Font size="14.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="-222.0" top="21.0" />
+                        <Insets left="333.0" top="-150.0" />
                      </StackPane.margin>
                   </Label>
                   <TextArea fx:id="status" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0" style="-fx-background-color: #e3d7cf;">
                      <StackPane.margin>
-                        <Insets left="-217.0" top="110.0" />
+                        <Insets left="333.0" top="-63.0" />
                      </StackPane.margin>
                   </TextArea>
+                  <Label fx:id="message" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="42.0" prefWidth="248.0" textFill="#0ee524">
+                     <StackPane.margin>
+                        <Insets left="-750.0" top="250.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </StackPane>
          </children>

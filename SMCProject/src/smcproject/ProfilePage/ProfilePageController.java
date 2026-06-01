@@ -204,7 +204,6 @@ public class ProfilePageController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
-    @FXML
     private void profile(ActionEvent event) throws IOException 
     {
         Parent root =
@@ -222,6 +221,10 @@ public class ProfilePageController implements Initializable {
 
     @FXML
     private void companySave(ActionEvent event) {
+    }
+
+    @FXML
+    private void profileSave(ActionEvent event) {
     }
     
 }

@@ -3,6 +3,8 @@ package smcproject.AddOrder;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,33 +18,28 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import smcproject.AddProduct.AddProductModel;
+import smcproject.AddProduct.AddProductService;
 
 
 public class AddOrderPageController implements Initializable 
 {
-
-    @FXML
-    private Label orderId;
-    @FXML
-    private TextField customerName;
-    @FXML
-    private TextField phoneNumer;
-    @FXML
-    private TextField email;
-    @FXML
-    private TextArea address;
     @FXML
     private DatePicker orderDate;
-    @FXML
-    private DatePicker expectedDate;
-    @FXML
-    private TextField productName;
     @FXML
     private TextField quantity;
     @FXML
     private TextField amount;
     @FXML
     private TextField status;
+    @FXML
+    private Label message;
+    @FXML
+    private Label orderId;
+    @FXML
+    private TextField cusId;
+    @FXML
+    private TextField proId;
     
 
     
@@ -50,7 +47,32 @@ public class AddOrderPageController implements Initializable
     public void initialize(URL url, ResourceBundle rb) 
     {
         
-    }    
+    }   
+    
+    @FXML
+    private void createOrder(ActionEvent event) throws ClassNotFoundException, SQLException 
+    {
+        if (amount.getText().trim().isEmpty()
+                || quantity.getText().trim().isEmpty())
+        {
+            message.setText("Enter all details");
+            return;
+        }
+        int cusid = Integer.parseInt(cusId.getText());
+        int proid = Integer.parseInt(proId.getText());
+        int quan = Integer.parseInt(quantity.getText());
+        double price = Double.parseDouble(amount.getText());    
+        String stat = status.getText();
+        LocalDate odate = orderDate.getValue();
+        
+        
+        AddOrderModel am = new AddOrderModel(cusid, proid, quan, price, stat, odate);
+        
+        AddOrderService as = new AddOrderService();
+        String mes = as.createOrder(am);
+        
+        message.setText(mes);
+    }
 
     @FXML
     private void profile(ActionEvent event) throws IOException 
@@ -231,9 +253,7 @@ public class AddOrderPageController implements Initializable
         stage.show();
     }
 
-    @FXML
-    private void createOrder(ActionEvent event) {
-    }
+    
 
     @FXML
     private void back(ActionEvent event) throws IOException 

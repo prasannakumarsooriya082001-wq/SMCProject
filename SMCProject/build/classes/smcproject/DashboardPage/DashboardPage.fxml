@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smcproject.DashboardPage.DashboardPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smcproject.DashboardPage.DashboardPageController">
    <left>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: #2C1F0E;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -412,7 +412,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/customer.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />
@@ -450,7 +450,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/money.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />
@@ -489,13 +489,13 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TableView layoutX="2.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="670.0">
+                        <TableView fx:id="orderTable" editable="true" fixedCellSize="50.0" layoutX="2.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="670.0" style="-fx-alignment: center; -fx-font-size: 16;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
                           <columns>
-                            <TableColumn fx:id="orderId" minWidth="-Infinity" prefWidth="140.0" text="ORDER ID" />
-                            <TableColumn fx:id="customer" minWidth="-Infinity" prefWidth="170.0" text="CUSTOMER" />
-                              <TableColumn fx:id="amount" minWidth="-Infinity" prefWidth="130.0" text="AMOUNT" />
-                              <TableColumn fx:id="status" minWidth="-Infinity" prefWidth="120.0" text="STATUS" />
-                              <TableColumn fx:id="date" minWidth="-Infinity" prefWidth="110.0" text="DATE" />
+                            <TableColumn fx:id="orderId" minWidth="-Infinity" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 16;" text="ORDER ID" />
+                            <TableColumn fx:id="customer" minWidth="-Infinity" prefWidth="170.0" style="-fx-alignment: center; -fx-font-size: 16;" text="CUSTOMER" />
+                              <TableColumn fx:id="amount" minWidth="-Infinity" prefWidth="130.0" style="-fx-alignment: center; -fx-font-size: 16;" text="AMOUNT" />
+                              <TableColumn fx:id="date" minWidth="-Infinity" prefWidth="120.0" style="-fx-alignment: center; -fx-font-size: 16;" text="DATE" />
+                              <TableColumn fx:id="status" minWidth="-Infinity" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: 16;" text="STATUS" />
                           </columns>                          
                         </TableView>
                         <Hyperlink layoutX="530.0" layoutY="325.0" onAction="#viewAllOrder" text="View All Orders →" textFill="#c98a43">
@@ -587,7 +587,7 @@
                <children>
                   <Label alignment="CENTER" text="Dashboard">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <StackPane.margin>
                         <Insets left="-152.0" top="-39.0" />
@@ -624,7 +624,7 @@
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search anything ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
+                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
                            <HBox.margin>
                               <Insets top="-5.0" />
                            </HBox.margin>

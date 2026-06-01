@@ -40,27 +40,28 @@ public class ProductsPageController implements Initializable {
     @FXML
     private TextField searchProduct;
     @FXML
-    private TableColumn<?, ?> actions;
-    @FXML
     private TableColumn<ProductsModel, String> productName;
     @FXML
     private TableColumn<ProductsModel, String> category;
     @FXML
     private TableColumn<ProductsModel, Double> price;
     @FXML
-    private TableColumn<ProductsModel, String> stock;
+    private TableColumn<ProductsModel, Integer> stock;
     @FXML
     private TableColumn<ProductsModel, String> status;
     @FXML
     private TableView<ProductsModel> productTable;
-
+    @FXML
+    private TableColumn<ProductsModel, Integer> productID;
     
     
     private ProductsService ps = new ProductsService();
+   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        productID.setCellValueFactory(new PropertyValueFactory<>("productId"));
         productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));

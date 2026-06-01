@@ -6,6 +6,7 @@ package smcproject.AddMaterial;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import smcproject.AddNewCustomer.AddCustomerModel;
+import smcproject.AddNewCustomer.AddCutomerService;
 
 /**
  * FXML Controller class
@@ -27,32 +30,21 @@ import javafx.stage.Stage;
  */
 public class AddMaterialPageController implements Initializable {
 
-    @FXML
-    private Label orderId;
+    
     @FXML
     private TextField materialName;
     @FXML
     private TextField category;
     @FXML
-    private TextField supplierName;
-    @FXML
-    private Label subCategory;
-    @FXML
-    private DatePicker date;
-    @FXML
-    private TextField address;
-    @FXML
     private TextField unit;
-    @FXML
-    private TextField amount;
-    @FXML
-    private TextField brandName;
-    @FXML
-    private TextField phoneNumber;
     @FXML
     private TextArea stock;
     @FXML
     private TextArea status;
+    @FXML
+    private Label orderId;
+    @FXML
+    private Label message;
 
     /**
      * Initializes the controller class.
@@ -61,6 +53,23 @@ public class AddMaterialPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    private void addProduct(ActionEvent event) throws ClassNotFoundException, SQLException 
+    {
+        String mateName = materialName.getText();
+        String cate = category.getText();
+        String units = unit.getText();
+        int stocks = Integer.parseInt(stock.getText());
+        String stat = status.getText();
+        
+        AddMaterialModel am = new AddMaterialModel(mateName, cate, units, stocks,stat);
+        
+        AddMaterialService as = new AddMaterialService();
+        String mes = as.addMaterial(am);
+        
+        message.setText(mes);    
+    }
 
     @FXML
     private void profile(ActionEvent event) throws IOException 
@@ -241,9 +250,7 @@ public class AddMaterialPageController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void addProduct(ActionEvent event) {
-    }
+    
 
     @FXML
     private void back(ActionEvent event) throws IOException 

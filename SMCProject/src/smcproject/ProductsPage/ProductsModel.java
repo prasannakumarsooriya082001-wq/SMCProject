@@ -4,16 +4,19 @@ package smcproject.ProductsPage;
 
 public class ProductsModel 
 {
+    private int productId;
     private String productName;
     private String category;
     private double price;
-    private String stock;
+    private int stock;
     private String status;
 
     public ProductsModel() {
     }
 
-    public ProductsModel(String productName, String category, double price, String stock, String status) {
+    public ProductsModel(int productId,String productName, String category, double price, int stock, String status) 
+    {
+        this.productId = productId;
         this.productName = productName;
         this.category = category;
         this.price = price;
@@ -53,12 +56,20 @@ public class ProductsModel
         this.price = price;
     }
 
-    public String getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
     
     

@@ -314,7 +314,7 @@
                <children>
                   <Label alignment="CENTER" text="Products">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <StackPane.margin>
                         <Insets left="-166.0" top="-39.0" />
@@ -400,7 +400,7 @@
                   <Insets left="31.0" top="12.0" />
                </VBox.margin>
             </Label>
-            <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#menu1" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="MenuButton">
+            <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#menu1" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="All Categories">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -409,7 +409,7 @@
                   <Insets left="350.0" top="28.0" />
                </VBox.margin>
             </MenuButton>
-            <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#menu2" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="MenuButton">
+            <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#menu2" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="All Status">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -450,19 +450,19 @@
                </VBox.margin>
             </HBox>
             
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="990.0" style="-fx-background-color: ffffff; -fx-background-radius: 12; -fx-border-radius: 12;">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="990.0" style="-fx-background-color: ffffff; -fx-background-radius: 0 0 12 12; -fx-border-radius: 0 12 0 12;">
                <VBox.margin>
                   <Insets left="27.0" top="50.0" />
                </VBox.margin>
                <children>
-                  <TableView fx:id="productTable" layoutX="1.0" layoutY="2.4" prefHeight="364.0" prefWidth="990.0" style="-fx-background-radius: 10 0 0 0; -fx-border-radius: 10 0 0 0;" AnchorPane.topAnchor="2.0">
+                  <TableView fx:id="productTable" editable="true" fixedCellSize="60.0" layoutX="-3.0" layoutY="-0.8" prefHeight="367.0" prefWidth="990.0" style="-fx-font-size: 16; -fx-alignment: Center;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="productName" minWidth="-Infinity" prefWidth="210.0" text="Product Name" />
-                      <TableColumn fx:id="category" minWidth="-Infinity" prefWidth="190.0" text="Category" />
-                        <TableColumn fx:id="price" minWidth="-Infinity" prefWidth="160.0" text=" Price" />
-                        <TableColumn fx:id="stock" minWidth="-Infinity" prefWidth="130.0" text="Stock" />
-                        <TableColumn fx:id="status" minWidth="-Infinity" prefWidth="150.0" text=" Status" />
-                        <TableColumn fx:id="actions" minWidth="-Infinity" prefWidth="150.0" text=" Actions" />
+                      <TableColumn fx:id="productID" editable="false" minWidth="-Infinity" prefWidth="100.0" style="-fx-font-size: 16; -fx-alignment: center;" text="Product ID" />
+                      <TableColumn fx:id="productName" editable="false" minWidth="-Infinity" prefWidth="230.0" style="-fx-font-size: 16; -fx-alignment: center;" text="Product Name" />
+                        <TableColumn fx:id="category" editable="false" minWidth="-Infinity" prefWidth="200.0" style="-fx-font-size: 16; -fx-alignment: center;" text="Category" />
+                        <TableColumn fx:id="price" editable="false" minWidth="-Infinity" prefWidth="170.0" style="-fx-font-size: 16; -fx-alignment: center;" text="Price" />
+                        <TableColumn fx:id="stock" editable="false" minWidth="-Infinity" prefWidth="140.0" style="-fx-font-size: 16; -fx-alignment: center;" text="Stock" />
+                        <TableColumn fx:id="status" prefWidth="150.0" style="-fx-font-size: 16; -fx-alignment: center;" text="Status" />
                     </columns>
                   </TableView>
                   <Label layoutX="90.0" layoutY="384.0" text="Showing 1–5 of 25 products" textFill="#7a5c43" AnchorPane.rightAnchor="751.0" AnchorPane.topAnchor="383.0">

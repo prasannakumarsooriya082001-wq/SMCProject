@@ -6,6 +6,8 @@ package smcproject.AddNewCustomer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import smcproject.AddOrder.AddOrderModel;
+import smcproject.AddOrder.AddOrderService;
 
 /**
  * FXML Controller class
@@ -38,15 +42,7 @@ public class AddNewCustomerPageController implements Initializable {
     @FXML
     private TextArea address;
     @FXML
-    private DatePicker orderDate;
-    @FXML
-    private DatePicker expectedDate;
-    @FXML
-    private TextField productName;
-    @FXML
-    private TextField quantity;
-    @FXML
-    private TextField amount;
+    private Label message;
 
     /**
      * Initializes the controller class.
@@ -252,9 +248,19 @@ public class AddNewCustomerPageController implements Initializable {
     }
 
     @FXML
-    private void addCustomer(ActionEvent event) throws IOException 
+    private void addCustomer(ActionEvent event) throws IOException, ClassNotFoundException, SQLException 
     {
-                
+        String cusName = customerName.getText();
+        String phoNum = phoneNumer.getText();
+        String emailId = email.getText();
+        String addr = address.getText();
+        
+        AddCustomerModel am = new AddCustomerModel(cusName, phoNum, emailId, addr);
+        
+        AddCutomerService as = new AddCutomerService();
+        String mes = as.createCustomer(am);
+        
+        message.setText(mes);         
     }
     
 }
