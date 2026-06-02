@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smcproject.DashboardPage.DashboardPageController">
+   <left>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: #2C1F0E;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="-77.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="198.0">
+               <children>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="46.0" style="-fx-background-color: #C4965A; -fx-background-radius: 10;">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="46.0" prefWidth="46.0" style="-fx-font-size: 30px;" text="🛋">
+                           <HBox.margin>
+                              <Insets left="7.0" top="-4.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="141.0">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                     <children>
+                        <Text fill="#c4965a" strokeType="OUTSIDE" strokeWidth="0.0" text="Management System">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-3.0" top="43.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text fill="#f5e9da" strokeType="OUTSIDE" strokeWidth="0.0" text="LuxeCraft">
+                           <font>
+                              <Font name="Georgia" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-116.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" top="19.0" />
+               </VBox.margin>
+            </HBox>
+            <Line endX="100.0" startX="-117.0" stroke="#c4965a">
+               <VBox.margin>
+                  <Insets left="1.0" />
+               </VBox.margin>
+            </Line>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <VBox.margin>
+                  <Insets left="13.0" top="32.0" />
+               </VBox.margin>
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #3A250F; -fx-border-color: transparent transparent transparent #c4965a; -fx-border-width: 0 0 0 3; -fx-border-radius: 3 0 0 3;" text="Dashboard" textFill="#c4965a">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/dashboard%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn1" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Products" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-11.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/sofa_icon2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn2" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Orders" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-26.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/buy-cart.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn3" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Customers" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/group.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn4" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Production" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="1.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/factory.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn5" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Inventory" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-6.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/bar-chart.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn6" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Reports" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-18.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/management.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#dashboardBtn7" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Settings" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-15.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/setting.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="-5.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="198.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Button alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#btn8" prefHeight="42.0" prefWidth="189.0" style="-fx-background-color: #2C1F0E;" text="Logout" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-15.0" />
+                     </padding>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true">
+                     <StackPane.margin>
+                        <Insets left="-130.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../images/logout.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="13.0" top="169.0" />
+               </VBox.margin>
+            </StackPane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F5F2EE;" BorderPane.alignment="CENTER">
+         <content>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="820.0" prefWidth="1166.0" spacing="15.0" style="-fx-background-color: #e3d7cf;">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" text="Dashboard Overview">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="9.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="18.0" prefWidth="188.0" text="01 May 2026 – 22 May 2026" textFill="#c4965a">
+                     <VBox.margin>
+                        <Insets left="10.0" top="-9.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="128.0" prefWidth="226.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <children>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="34.0" prefWidth="39.0">
+                           <HBox.margin>
+                              <Insets left="92.0" top="9.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/check-mark.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="1.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="Total Orders" textFill="#7a5c43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-69.0" top="48.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="120">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-74.0" top="81.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="9.0" top="-12.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="128.0" prefWidth="226.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <children>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="34.0" prefWidth="39.0">
+                           <HBox.margin>
+                              <Insets left="92.0" top="9.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/product.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="1.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="In Production" textFill="#7a5c43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-74.0" top="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="15">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-74.0" top="81.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="260.0" top="-143.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="128.0" prefWidth="226.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <children>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="34.0" prefWidth="39.0">
+                           <HBox.margin>
+                              <Insets left="92.0" top="9.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/customer.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="1.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="Total Customers" textFill="#7a5c43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-84.0" top="48.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="350">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-86.0" top="81.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="515.0" top="-143.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="128.0" prefWidth="226.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <children>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="34.0" prefWidth="39.0">
+                           <HBox.margin>
+                              <Insets left="92.0" top="9.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/money.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets top="1.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="Monthly Revenue" textFill="#7a5c43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-84.0" top="48.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="25.06 L">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-118.0" top="81.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="770.0" top="-143.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="368.0" prefWidth="674.0" style="-fx-background-color: ffffff; -fx-border-color: #E8DDD0; -fx-border-radius: 20; -fx-background-radius: 20;">
+                     <VBox.margin>
+                        <Insets left="9.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label layoutX="10.0" layoutY="15.0" text="RECENT ORDERS" textFill="#7a5c43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="orderTable" editable="true" fixedCellSize="50.0" layoutX="2.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="670.0" style="-fx-alignment: center; -fx-font-size: 16;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
+                          <columns>
+                            <TableColumn fx:id="orderId" minWidth="-Infinity" prefWidth="140.0" style="-fx-alignment: center; -fx-font-size: 16;" text="ORDER ID" />
+                            <TableColumn fx:id="customer" minWidth="-Infinity" prefWidth="170.0" style="-fx-alignment: center; -fx-font-size: 16;" text="CUSTOMER" />
+                              <TableColumn fx:id="amount" minWidth="-Infinity" prefWidth="130.0" style="-fx-alignment: center; -fx-font-size: 16;" text="AMOUNT" />
+                              <TableColumn fx:id="date" minWidth="-Infinity" prefWidth="120.0" style="-fx-alignment: center; -fx-font-size: 16;" text="DATE" />
+                              <TableColumn fx:id="status" minWidth="-Infinity" prefWidth="110.0" style="-fx-alignment: center; -fx-font-size: 16;" text="STATUS" />
+                          </columns>                          
+                        </TableView>
+                        <Hyperlink layoutX="530.0" layoutY="325.0" onAction="#viewAllOrder" text="View All Orders →" textFill="#c98a43">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="307.0" style="-fx-background-color: ffffff; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #E7DDD3;">
+                     <VBox.margin>
+                        <Insets left="701.0" top="-384.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label layoutX="15.0" layoutY="20.0" text="PRODUCTION OVERVIEW" textFill="#7a5c43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="overview" layoutX="78.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" AnchorPane.rightAnchor="78.79999999999998" />
+                        <HBox layoutX="20.0" layoutY="224.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="234.0">
+                           <children>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="200.0">
+                                 <HBox.margin>
+                                    <Insets left="14.0" top="22.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2fcf67" height="10.0" stroke="TRANSPARENT" strokeType="INSIDE" width="10.0">
+                                       <HBox.margin>
+                                          <Insets left="1.0" top="9.0" />
+                                       </HBox.margin>
+                                    </Rectangle>
+                                    <Label text="Completed          29">
+                                       <HBox.margin>
+                                          <Insets left="14.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="200.0">
+                                 <HBox.margin>
+                                    <Insets left="-203.0" top="50.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c99a4b" height="10.0" stroke="TRANSPARENT" strokeType="INSIDE" width="10.0">
+                                       <HBox.margin>
+                                          <Insets left="4.0" top="12.0" />
+                                       </HBox.margin>
+                                    </Rectangle>
+                                    <Label text="In Progress        15">
+                                       <HBox.margin>
+                                          <Insets left="14.0" top="8.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+                                 <HBox.margin>
+                                    <Insets left="-199.0" top="81.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d5a85b" height="10.0" stroke="TRANSPARENT" strokeType="INSIDE" width="10.0">
+                                       <HBox.margin>
+                                          <Insets left="3.0" top="11.0" />
+                                       </HBox.margin>
+                                    </Rectangle>
+                                    <Label text="Pending            14">
+                                       <HBox.margin>
+                                          <Insets left="15.0" top="7.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="1059.0" style="-fx-background-color: #fcf2eb;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="220.0" />
+         </BorderPane.margin>
+         <children>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="64.0" prefWidth="298.0">
+               <children>
+                  <Label alignment="CENTER" text="Dashboard">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="-152.0" top="-39.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Welcome back, Admin! Here's what's happening." textFill="#c4965a">
+                     <StackPane.margin>
+                        <Insets left="18.0" top="10.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets top="16.0" />
+               </HBox.margin>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="511.0">
+               <HBox.margin>
+                  <Insets left="242.0" />
+               </HBox.margin>
+               <children>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #f1ebe3; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
+                     <StackPane.margin>
+                        <Insets left="-41.0" />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                     <children>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search%20(1).png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
+                           <HBox.margin>
+                              <Insets top="-5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#profile" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #F8F5F1; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
+                     <StackPane.margin>
+                        <Insets left="433.0" />
+                     </StackPane.margin>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user%20(2).png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="432.0" top="1.0" />
+                     </StackPane.margin>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#notify" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #F8F5F1; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
+               <HBox.margin>
+                  <Insets left="-111.0" top="21.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/notification.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="-27.0" top="29.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
