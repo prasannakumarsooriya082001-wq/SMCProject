@@ -12,5 +12,6 @@ public class Session
 {
     public static String email;
     public static String userName;
+    public static String pasWord;
     
 }

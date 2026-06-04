@@ -68,4 +68,25 @@ public class ProfileDAO
         
         
     }
+    
+    
+    
+    public void updatePassword(ProfileModel pm)throws Exception {
+
+        Connection conn = dbConnection();
+
+        PreparedStatement psmt =conn.prepareStatement("UPDATE register_table SET pass_word =? WHERE  email=?");
+
+        psmt.setString(1, pm.getPassWord());
+        psmt.setString(2, Session.email);
+        
+
+        psmt.executeUpdate();
+        
+        Session.userName = pm.getFullName();
+        Session.email = pm.getEmail();
+        Session.pasWord = pm.getPassWord();
+        
+        
+    }
 }

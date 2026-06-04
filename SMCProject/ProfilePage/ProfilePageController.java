@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import smcproject.Session;
 
 /**
  * FXML Controller class
@@ -235,7 +236,39 @@ public class ProfilePageController implements Initializable {
     }
 
     @FXML
-    private void companySave(ActionEvent event) {
+    private void companySave(ActionEvent event) throws Exception 
+    {
+        if(pass.getText().equals(Session.pasWord))
+        {
+            if (nPass.getText().equals(cPass.getText())) {
+                try {
+
+                    ProfileModel pm = new ProfileModel();
+                    pm.setPassWord(nPass.getText());
+                    ProfileService ps = new ProfileService();
+                    ps.updatePass(pm);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Password Updated");
+                    alert.show();
+
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("New Password and Confirm pasword should be same");
+                alert.show();
+            }
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Invalid Current Password");
+            alert.show();
+        }
+            
+        
+        
     }
 
     @FXML

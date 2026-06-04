@@ -18,4 +18,11 @@ public class ProfileService
         dao.updateProfile(pm);
     }
     
+    public void updatePass(ProfileModel pm)throws Exception {
+
+        ProfileDAO dao = new ProfileDAO();
+
+        dao.updatePassword(pm);
+    }
+    
 }

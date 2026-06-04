@@ -13,15 +13,19 @@ public class ProfileModel
     private String fullName;
     private String email;
     private String phoneNumber;
+    private String passWord;
 
     public ProfileModel() {
     }
 
-    public ProfileModel(String fullName, String email, String phoneNumber) {
+    public ProfileModel(String fullName, String email, String phoneNumber, String passWord) {
         this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.passWord = passWord;
     }
+
+    
 
     public String getFullName() {
         return fullName;
@@ -45,6 +49,14 @@ public class ProfileModel
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
     
     

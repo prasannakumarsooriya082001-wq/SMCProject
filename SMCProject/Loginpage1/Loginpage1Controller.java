@@ -83,14 +83,9 @@ public class Loginpage1Controller implements Initializable {
     @FXML
     private void register(ActionEvent event) throws IOException {
 
-        Parent root
-                = FXMLLoader.load(
-                        getClass().getResource("/smcproject/RegisterPage/RegisterPage.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/smcproject/RegisterPage/RegisterPage.fxml"));
 
-        Stage stage
-                = (Stage) ((Node) event.getSource())
-                        .getScene()
-                        .getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(new Scene(root));
         stage.show();
@@ -112,6 +107,7 @@ public class Loginpage1Controller implements Initializable {
         if (res >0)
         {
             Session.userName = username.getText();
+            Session.pasWord = password.getText();
             
             
             Parent root = FXMLLoader.load(getClass().getResource("/smcproject/DashboardPage/DashboardPage.fxml"));
