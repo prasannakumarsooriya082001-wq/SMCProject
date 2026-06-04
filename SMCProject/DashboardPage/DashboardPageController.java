@@ -4,6 +4,8 @@
  */
 package smcproject.DashboardPage;
 
+import javafx.application.Platform;
+import javafx.scene.chart.PieChart;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,8 +35,6 @@ import smcproject.CustomerPage.CustomerPageController;
 
 public class DashboardPageController implements Initializable {
 
-    @FXML
-    private TextField search;
     @FXML
     private TableColumn<DashboardModel, Integer> orderId;
     @FXML
@@ -242,6 +242,40 @@ public class DashboardPageController implements Initializable {
         
         
         orderTable.setItems(ol);
+        
+        
+        try {
+            int completed= ds.getStatusCount("Completed");
+
+            int inProgress= ds.getStatusCount("In Progress");
+
+            int pending= ds.getStatusCount("Pending");
+
+            ObservableList<PieChart.Data> pieData= FXCollections.observableArrayList(
+                            new PieChart.Data("Completed", completed),
+                            new PieChart.Data("In Progress", inProgress),
+                            new PieChart.Data("Pending", pending));
+
+            overview.setData(pieData);
+            
+            overview.setData(pieData);
+
+            Platform.runLater(() -> {
+
+                for (PieChart.Data data : overview.getData()) {
+                    if (data.getName().equals("Completed")) {
+                        data.getNode().setStyle("-fx-pie-color: green;");
+                    } else if (data.getName().equals("Pending")) {
+                        data.getNode().setStyle("-fx-pie-color: red;");
+                    } else if (data.getName().equals("In Progress")) {
+                        data.getNode().setStyle("-fx-pie-color: orange;");
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        overview.setTitle("Orders");
     }    
 
     @FXML

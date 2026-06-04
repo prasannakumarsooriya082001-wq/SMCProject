@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
 import smcproject.RegisterPage.RegisterModel;
+import smcproject.Session;
 
 
 public class LoginDAO 
@@ -37,6 +38,8 @@ public class LoginDAO
         
         if(rs.next())
         {
+            Session.userName = rs.getString("user_name");
+            Session.email = rs.getString("email");
             return 1;
         }
         else{

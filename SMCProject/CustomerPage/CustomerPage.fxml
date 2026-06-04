@@ -333,29 +333,6 @@
                   <Insets left="242.0" />
                </HBox.margin>
                <children>
-                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #f1ebe3; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
-                     <StackPane.margin>
-                        <Insets left="-41.0" />
-                     </StackPane.margin>
-                     <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                     </padding>
-                     <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/search%20(1).png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </ImageView>
-                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search anything ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
-                           <HBox.margin>
-                              <Insets top="-5.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#profile" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #F8F5F1; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
                      <StackPane.margin>
                         <Insets left="433.0" />
@@ -419,7 +396,7 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <TextField fx:id="searchProduct" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="246.0" promptText="Search products ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
+                  <TextField fx:id="searchProduct" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#searchItem" prefHeight="29.0" prefWidth="246.0" promptText="Search customer..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
                      <HBox.margin>
                         <Insets top="-5.0" />
                      </HBox.margin>

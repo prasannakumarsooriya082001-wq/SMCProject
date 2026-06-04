@@ -37,12 +37,7 @@ public class CustomerDAO
         
         List list = new ArrayList();
         
-        PreparedStatement psmt = conn.prepareStatement(
-                "SELECT c.customer_name, c.phone, c.email, c.address, "
-                + "COUNT(o.order_id) AS orders "
-                + "FROM customer c "
-                + "LEFT JOIN orders o ON c.customer_id = o.customer_id "
-                + "GROUP BY c.customer_id, c.customer_name, c.phone, c.email, c.address");
+        PreparedStatement psmt = conn.prepareStatement("SELECT c.customer_name, c.phone, c.email, c.address,COUNT(o.order_id) AS orders FROM customer c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_id, c.customer_name, c.phone, c.email, c.address  ORDER BY c.customer_id");
         ResultSet rs = psmt.executeQuery();
         
         while(rs.next())

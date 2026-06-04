@@ -335,29 +335,6 @@
                   <Insets left="242.0" />
                </HBox.margin>
                <children>
-                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #f1ebe3; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
-                     <StackPane.margin>
-                        <Insets left="-41.0" />
-                     </StackPane.margin>
-                     <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                     </padding>
-                     <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/search%20(1).png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </ImageView>
-                        <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="246.0" promptText="Search anything ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
-                           <HBox.margin>
-                              <Insets top="-5.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#profile" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #F8F5F1; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d8cbb8;">
                      <StackPane.margin>
                         <Insets left="433.0" />
@@ -439,7 +416,7 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <TextField fx:id="searchProduct" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="246.0" promptText="Search products ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
+                  <TextField fx:id="searchProduct" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#searchItem" prefHeight="29.0" prefWidth="246.0" promptText="Search products ..." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16;">
                      <HBox.margin>
                         <Insets top="-5.0" />
                      </HBox.margin>
@@ -470,45 +447,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" layoutX="510.0" layoutY="364.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="419.0" spacing="10.0" AnchorPane.leftAnchor="565.0">
-                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#backward" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="&lt;">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page1" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: #c4965a; -fx-background-radius: 10; -fx-border-radius: 10;" text="1" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page2" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="2">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page3" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="3">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page4" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="4">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#page5" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="5">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#forward" prefHeight="40.0" prefWidth="40.0" style="-fx-border-color: #d9c9b8; -fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="&gt;">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
                </children>
             </AnchorPane>
          </children>

@@ -33,7 +33,7 @@ public class ProfileDAO
         PreparedStatement psmt =conn.prepareStatement("SELECT * FROM register_table WHERE user_name=? OR email=?");
 
         psmt.setString(1, Session.userName);
-        psmt.setString(2, Session.userName);
+        psmt.setString(2, Session.email);
 
         ResultSet rs = psmt.executeQuery();
 
@@ -53,14 +53,19 @@ public class ProfileDAO
 
         Connection conn = dbConnection();
 
-        PreparedStatement psmt =conn.prepareStatement("UPDATE register_table SET user_name=?,phone_number=? WHERE user_name=? OR email=?");
+        PreparedStatement psmt =conn.prepareStatement("UPDATE register_table SET user_name=?,phone_number=? , email =? WHERE  email=?");
 
         psmt.setString(1, pm.getFullName());
         psmt.setString(2, pm.getPhoneNumber());
-
-        psmt.setString(3, Session.userName);
-        psmt.setString(4, Session.userName);
+        psmt.setString(3, pm.getEmail());
+        psmt.setString(4, Session.email);
+        
 
         psmt.executeUpdate();
+        
+        Session.userName = pm.getFullName();
+        Session.email = pm.getEmail();
+        
+        
     }
 }

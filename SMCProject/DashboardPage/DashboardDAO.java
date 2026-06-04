@@ -55,4 +55,23 @@ public class DashboardDAO
         }
         return list;
     }
+    
+    
+    public int getStatusCount(String status)throws ClassNotFoundException, SQLException 
+    {
+        Connection conn = dbConnection();
+
+        PreparedStatement psmt= conn.prepareStatement("SELECT COUNT(*) FROM orders WHERE status = ?");
+
+        psmt.setString(1, status);
+
+        ResultSet rs = psmt.executeQuery();
+
+        if (rs.next()) 
+        {
+            return rs.getInt(1);
+        }
+
+        return 0;
+    }
 }

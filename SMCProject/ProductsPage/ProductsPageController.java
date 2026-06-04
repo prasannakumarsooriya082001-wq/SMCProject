@@ -36,8 +36,6 @@ import javafx.stage.Stage;
 public class ProductsPageController implements Initializable {
 
     @FXML
-    private TextField search;
-    @FXML
     private TextField searchProduct;
     @FXML
     private TableColumn<ProductsModel, String> productName;
@@ -56,6 +54,8 @@ public class ProductsPageController implements Initializable {
     
     
     private ProductsService ps = new ProductsService();
+    
+    ObservableList<ProductsModel> originalList = FXCollections.observableArrayList();
    
     
     @Override
@@ -68,20 +68,53 @@ public class ProductsPageController implements Initializable {
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         
-        ObservableList ol = null;
+        
         
         try {
-            ol = FXCollections.observableArrayList(ps.getAllProducts());
+            originalList = FXCollections.observableArrayList(ps.getAllProducts());
+
+            productTable.setItems(originalList);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductsPageController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProductsPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        productTable.setItems(ol);
+        searchProduct.textProperty().addListener((obs, oldValue, newValue) -> 
+        {searchItem();
+        });
 
     } 
+    
+    
+    @FXML
+    public void searchItem()
+    {
+        String text = searchProduct.getText().toLowerCase();
+
+        if (text.isEmpty()) {
+            productTable.setItems(originalList);
+            return;
+        }
+
+        ObservableList<ProductsModel> filteredList = FXCollections.observableArrayList();
+
+        for (ProductsModel p : originalList) {
+            if (p.getProductName().toLowerCase().contains(text)) {
+                filteredList.add(p);
+            }
+        }
+
+        productTable.setItems(filteredList);
+    }
+
+
+public void clearSearch()
+{
+    searchProduct.clear();      // search box clear
+    productTable.setItems(originalList); // full data again show
+}
+
     
     
     @FXML
@@ -266,29 +299,6 @@ public class ProductsPageController implements Initializable {
     }
 
 
-    @FXML
-    private void backward(ActionEvent event) {
-    }
-
-    @FXML
-    private void page1(ActionEvent event) {
-    }
-
-    @FXML
-    private void page2(ActionEvent event) {
-    }
-
-    @FXML
-    private void page3(ActionEvent event) {
-    }
-
-    @FXML
-    private void page4(ActionEvent event) {
-    }
-
-    @FXML
-    private void page5(ActionEvent event) {
-    }
 
 
     @FXML
@@ -315,9 +325,6 @@ public class ProductsPageController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void forward(ActionEvent event) {
-    }
 
 
 

@@ -4,6 +4,13 @@
  */
 package smcproject.ReportsPage;
 
+
+
+import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,9 +35,7 @@ import javafx.stage.Stage;
 public class ReportsPageController implements Initializable {
 
     @FXML
-    private TextField search;
-    @FXML
-    private BarChart<?, ?> reports;
+    private BarChart<String, Number> barChart;
 
     
     @FXML
@@ -194,8 +199,33 @@ public class ReportsPageController implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        
+
+    XYChart.Series<String, Number> series =
+            new XYChart.Series<>();
+
+    series.setName("Revenue");
+
+    series.getData().add(
+            new XYChart.Data<>("Jan", 25000));
+
+    series.getData().add(
+            new XYChart.Data<>("Feb", 40000));
+
+    series.getData().add(
+            new XYChart.Data<>("Mar", 35000));
+
+    series.getData().add(
+            new XYChart.Data<>("Apr", 50000));
+
+    series.getData().add(
+            new XYChart.Data<>("May", 65000));
+
+    barChart.getData().add(series);
+
+    System.out.println(barChart.getData().size());
     }    
 
     @FXML
@@ -218,9 +248,6 @@ public class ReportsPageController implements Initializable {
     private void notify(ActionEvent event) {
     }
 
-    @FXML
-    private void export(ActionEvent event) {
-    }
 
     @FXML
     private void date(ActionEvent event) {

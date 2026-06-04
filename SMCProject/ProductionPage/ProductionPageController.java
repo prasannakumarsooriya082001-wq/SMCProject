@@ -38,8 +38,6 @@ import smcproject.CustomerPage.CustomerPageController;
 public class ProductionPageController implements Initializable {
 
     @FXML
-    private TextField search;
-    @FXML
     private TableColumn<ProductionModel, Integer> productionId;
     @FXML
     private TableColumn<ProductionModel, Integer> product;

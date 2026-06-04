@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.ProductsPage.ProductsModel;
 import smcproject.ProductsPage.ProductsPageController;
 
 /**
@@ -33,8 +34,6 @@ import smcproject.ProductsPage.ProductsPageController;
  */
 public class CustomerPageController implements Initializable {
 
-    @FXML
-    private TextField search;
     @FXML
     private TextField searchProduct;
     @FXML
@@ -210,6 +209,11 @@ public class CustomerPageController implements Initializable {
     
     
     private CustomerService cs = new CustomerService();
+    
+    ObservableList<CustomerModel> originalList = FXCollections.observableArrayList();
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -219,18 +223,21 @@ public class CustomerPageController implements Initializable {
         orders.setCellValueFactory(new PropertyValueFactory<>("orders"));
         
         
-        ObservableList ol = null;
+        
         
         try {
-            ol = FXCollections.observableArrayList(cs.getAllCustomers());
+            originalList = FXCollections.observableArrayList(cs.getAllCustomers());
+            tableview.setItems(originalList);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        searchProduct.textProperty().addListener((obs, oldValue, newValue) -> 
+        {searchItem();
+        });
         
-        tableview.setItems(ol);
     }    
 
     @FXML
@@ -267,6 +274,33 @@ public class CustomerPageController implements Initializable {
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void searchItem() 
+    {
+        String text = searchProduct.getText().toLowerCase();
+
+        if (text.isEmpty()) {
+            tableview.setItems(originalList);
+            return;
+        }
+
+        ObservableList<CustomerModel> filteredList = FXCollections.observableArrayList();
+
+        for (CustomerModel p : originalList) {
+            if (p.getCustomerName().toLowerCase().contains(text)) {
+                filteredList.add(p);
+            }
+        }
+
+        tableview.setItems(filteredList);
+    }
+    
+    public void clearSearch()
+    {
+        searchProduct.clear();      // search box clear
+        tableview.setItems(originalList); // full data again show
     }
 
     

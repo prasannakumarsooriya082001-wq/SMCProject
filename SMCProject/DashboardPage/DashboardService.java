@@ -21,4 +21,9 @@ public class DashboardService
         return list;
     }
     
+    public int getStatusCount(String status) throws ClassNotFoundException, SQLException 
+    {
+        return dd.getStatusCount(status);
+    }
+    
 }

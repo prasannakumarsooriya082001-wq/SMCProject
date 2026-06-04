@@ -37,7 +37,7 @@ public class OrdersDAO
         
         List list = new ArrayList();
         
-        PreparedStatement psmt = conn.prepareStatement("SELECT o.order_id, c.customer_name, o.amount, o.order_date ,o.status " +"FROM orders o "+"JOIN customer c ON o.customer_id = c.customer_id");
+        PreparedStatement psmt = conn.prepareStatement("SELECT o.order_id, c.customer_name, o.amount, o.order_date ,o.status  FROM orders o JOIN customer c ON o.customer_id = c.customer_id ORDER BY c.customer_id");
         ResultSet rs = psmt.executeQuery();
         
         while(rs.next())

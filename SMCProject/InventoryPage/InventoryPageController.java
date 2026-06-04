@@ -34,8 +34,6 @@ import smcproject.CustomerPage.CustomerPageController;
 public class InventoryPageController implements Initializable {
 
     @FXML
-    private TextField search;
-    @FXML
     private TableColumn<InventoryModel, String> materialName;
     @FXML
     private TableColumn<InventoryModel, String> category;

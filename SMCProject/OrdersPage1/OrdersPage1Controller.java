@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import smcproject.CustomerPage.CustomerPageController;
+import smcproject.ProductsPage.ProductsModel;
 
 /**
  * FXML Controller class
@@ -34,8 +35,6 @@ import smcproject.CustomerPage.CustomerPageController;
  */
 public class OrdersPage1Controller implements Initializable {
 
-    @FXML
-    private TextField search;
     @FXML
     private TextField searchProduct;
     @FXML
@@ -52,6 +51,8 @@ public class OrdersPage1Controller implements Initializable {
     private TableView<OrdersModel> orderTable;
     
     private OrdersService os = new OrdersService();
+    
+    ObservableList<OrdersModel> originalList = FXCollections.observableArrayList();
 
     @FXML
     private void dashboardBtn1(ActionEvent event)
@@ -224,10 +225,12 @@ public class OrdersPage1Controller implements Initializable {
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         
-        ObservableList ol = null;
+        
         
         try {
-            ol = FXCollections.observableArrayList(os.getAllOrders());
+            originalList = FXCollections.observableArrayList(os.getAllOrders());
+            
+            orderTable.setItems(originalList);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CustomerPageController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -235,7 +238,9 @@ public class OrdersPage1Controller implements Initializable {
         }
         
         
-        orderTable.setItems(ol);
+        searchProduct.textProperty().addListener((obs, oldValue, newValue) -> 
+        {searchItem();
+        });
     }    
 
     @FXML
@@ -276,6 +281,29 @@ public class OrdersPage1Controller implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    @FXML
+    private void searchItem() 
+    {
+        String text = searchProduct.getText().toLowerCase();
+
+        if (text.isEmpty()) {
+            orderTable.setItems(originalList);
+            return;
+        }
+
+        ObservableList<OrdersModel> filteredList = FXCollections.observableArrayList();
+
+        for (OrdersModel p : originalList) {
+            if (p.getCustomerName().toLowerCase().contains(text)) {
+                filteredList.add(p);
+            }
+        }
+
+        orderTable.setItems(filteredList);
+    }
+    
+    
 
     
 }

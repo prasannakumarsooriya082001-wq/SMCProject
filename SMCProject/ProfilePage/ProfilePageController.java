@@ -247,6 +247,7 @@ public class ProfilePageController implements Initializable {
         ProfileModel pm =new ProfileModel();
         pm.setFullName(fullName.getText());
         pm.setPhoneNumber(phoneNumber.getText());
+        pm.setEmail(email.getText());
         ProfileService ps =new ProfileService();
         ps.update(pm);
         Alert alert =new Alert(Alert.AlertType.INFORMATION);

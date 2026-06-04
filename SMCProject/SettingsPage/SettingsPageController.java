@@ -14,9 +14,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import smcproject.ProfilePage.ProfileModel;
+import smcproject.ProfilePage.ProfileService;
 
 /**
  * FXML Controller class
@@ -25,8 +28,6 @@ import javafx.stage.Stage;
  */
 public class SettingsPageController implements Initializable {
 
-    @FXML
-    private TextField search;
     @FXML
     private TextField fullName;
     @FXML
@@ -203,8 +204,40 @@ public class SettingsPageController implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        try 
+        {
+        SettingsService ss = new SettingsService();
+
+        SettingsModel sm =ss.profileData();
+
+        fullName.setText(sm.getFullName());
+        email.setText(sm.getEmail());
+        phoneNumber.setText(sm.getPhoneNumber());
+        }
+        catch(Exception e)
+        {
+        System.out.println(e);
+        }
+        
+        
+        try 
+        {
+        SettingsService ss = new SettingsService();
+
+        SettingsModel sm =ss.companyData();
+
+        companyName.setText(sm.getCompanyName());
+        gstNumber.setText(sm.getGstNumber());
+        address.setText(sm.getAddress());
+        }
+        catch(Exception e)
+        {
+        System.out.println(e);
+        }
+        
+        
     }    
 
     @FXML
@@ -228,11 +261,54 @@ public class SettingsPageController implements Initializable {
     }
 
     @FXML
-    private void profileSave(ActionEvent event) {
+    private void profileSave(ActionEvent event) 
+    {
+        try 
+        {
+
+        SettingsModel sm = new SettingsModel();
+        sm.setFullName(fullName.getText());
+        sm.setPhoneNumber(phoneNumber.getText());
+        sm.setEmail(email.getText());
+        SettingsService ss = new SettingsService();
+        ss.update(sm);
+        Alert alert =new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Profile Updated");
+        alert.show();
+
+        }
+        catch(Exception e)
+        {
+        System.out.println(e);
+        }
     }
 
     @FXML
-    private void companySave(ActionEvent event) {
+    private void companySave(ActionEvent event) throws Exception 
+    {
+        try 
+        {
+
+        SettingsModel sm =  new SettingsModel();
+        sm.setCompanyName(companyName.getText());
+        sm.setGstNumber(gstNumber.getText());
+        sm.setAddress(address.getText());
+        
+        SettingsService ss = new SettingsService();
+        ss.updatecomapny(sm);
+        Alert alert =new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Company Updated");
+        alert.show();
+
+        }
+        catch(Exception e)
+        {
+        System.out.println(e);
+        }
+        
+        
+        
+        
     }
     
 }
