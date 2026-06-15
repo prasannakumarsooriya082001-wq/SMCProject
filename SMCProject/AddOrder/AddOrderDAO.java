@@ -44,4 +44,32 @@ public class AddOrderDAO
         
         return result;
     }
+    
+    
+    public int updateOrder(AddOrderModel am)
+            throws Exception {
+        Connection conn = dbConnection();
+
+        String query
+                = "update orders set customer_id=?, product_id=?, quantity=?, amount=?, status=?, order_date=? where order_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setInt(1, am.getCustomerId());
+
+        ps.setInt(2, am.getProductId());
+
+        ps.setInt(3, am.getQuantity());
+
+        ps.setDouble(4, am.getAmount());
+
+        ps.setString(5, am.getStatus());
+
+        ps.setDate(6,java.sql.Date.valueOf(am.getoDate()));
+
+        ps.setInt(7, am.getOrderId());
+
+        return ps.executeUpdate();
+    }
 }

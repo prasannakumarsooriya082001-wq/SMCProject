@@ -335,7 +335,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/expiry.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="5.0" top="1.0" />
@@ -373,7 +373,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/product.png" />
+                                    <Image url="@../images/supply-chain.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />
@@ -411,7 +411,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/check%20(1).png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />
@@ -459,6 +459,16 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
+                        <Button fx:id="deleteBtn" layoutX="521.0" layoutY="369.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" prefWidth="124.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="Delete" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="updateBtn" layoutX="671.0" layoutY="369.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="124.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="Update" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>

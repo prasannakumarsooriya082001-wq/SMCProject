@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import smcproject.ScreenScaler;
 
 
 public class ResetPasswordPageController implements Initializable 
@@ -49,7 +50,7 @@ public class ResetPasswordPageController implements Initializable
             .getScene()
             .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     

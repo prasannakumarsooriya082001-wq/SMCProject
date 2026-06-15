@@ -54,4 +54,21 @@ public class ProductsDAO
         }
         return list;
     }
+    
+    public int deleteMaterial(int id)
+            throws Exception 
+    {
+        Connection conn = dbConnection();
+        
+        String query
+                = "delete from product where product_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setInt(1, id);
+
+        return ps.executeUpdate();
+    }
+   
 }

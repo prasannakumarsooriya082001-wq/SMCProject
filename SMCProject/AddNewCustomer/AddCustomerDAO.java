@@ -43,4 +43,29 @@ public class AddCustomerDAO
         return result;
     }
     
+    
+    
+    public int updateCustomer(AddCustomerModel am)
+            throws Exception {
+        Connection conn = dbConnection();
+
+        String query
+                = "update customer set customer_name=?, phone=?, email=?, address=? where customer_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setString(1, am.getCustomerName());
+
+        ps.setString(2, am.getPhoneNumber());
+
+        ps.setString(3, am.getEmail());
+
+        ps.setString(4, am.getAddress());
+
+        ps.setInt(5, am.getId());
+
+        return ps.executeUpdate();
+    }
+    
 }

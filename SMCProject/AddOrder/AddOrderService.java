@@ -5,6 +5,7 @@
 package smcproject.AddOrder;
 
 import java.sql.SQLException;
+import smcproject.Notification.NotificationService;
 
 
 /**
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  */
 public class AddOrderService 
 {
-    public String createOrder(AddOrderModel am) throws ClassNotFoundException, SQLException
+    public String createOrder(AddOrderModel am) throws ClassNotFoundException, SQLException, Exception
     {
         AddOrderDAO ad = new AddOrderDAO();
 
@@ -28,11 +29,32 @@ public class AddOrderService
             int result = ad.insertOrder(am);
             if (result > 0)
             {
+                NotificationService ns
+                        = new NotificationService();
+
+                ns.addNotification(
+                        "New Order Created : "
+                        + am.getProductId());
                 return "Order Added...";
             } else 
             {
                 return "Order Not Added!";
             }
         }        
+    }
+    
+    public String updateOrder(AddOrderModel am)
+            throws Exception {
+        AddOrderDAO ad
+                = new AddOrderDAO();
+
+        int result
+                = ad.updateOrder(am);
+
+        if (result > 0) {
+            return "Updated";
+        } else {
+            return "Not Updated";
+        }
     }
 }

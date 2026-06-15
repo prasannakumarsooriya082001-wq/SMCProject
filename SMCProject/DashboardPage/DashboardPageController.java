@@ -31,6 +31,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import smcproject.CustomerPage.CustomerPageController;
+import smcproject.ScreenScaler;
 
 
 public class DashboardPageController implements Initializable {
@@ -100,7 +101,7 @@ public class DashboardPageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -295,7 +296,24 @@ public class DashboardPageController implements Initializable {
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException
+    {
+        Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
     @FXML

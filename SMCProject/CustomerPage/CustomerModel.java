@@ -16,6 +16,7 @@ public class CustomerModel
     private String phone;
     private String email;
     private int orders;
+    private String address;
     
 
     public CustomerModel() {
@@ -28,6 +29,16 @@ public class CustomerModel
         this.email = email;
         this.orders = orders;
     }
+
+    public CustomerModel(int customerId, String customerName, String phone, String email, int orders, String address) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.phone = phone;
+        this.email = email;
+        this.orders = orders;
+        this.address = address;
+    }
+    
 
     
 
@@ -69,6 +80,14 @@ public class CustomerModel
 
     public void setOrders(int orders) {
         this.orders = orders;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     

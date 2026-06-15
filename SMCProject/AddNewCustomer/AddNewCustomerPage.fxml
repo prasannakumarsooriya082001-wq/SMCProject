@@ -425,13 +425,6 @@
                         <Insets left="57.0" top="110.0" />
                      </StackPane.margin>
                   </TextArea>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addCustomer" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: #c4965a; -fx-background-radius: 10; -fx-border-radius: 10;" text="Add Customer" textFill="WHITE">
-                     <StackPane.margin>
-                        <Insets left="-200.0" top="250.0" />
-                     </StackPane.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font></Button>
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: #c4965a; -fx-border-radius: 10; -fx-background-radius: 10;" text="Back" textFill="WHITE">
                      <StackPane.margin>
                         <Insets left="318.0" top="250.0" />
@@ -448,6 +441,21 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="addBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addCustomer" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: #c4965a; -fx-background-radius: 10; -fx-border-radius: 10;" text="Add Customer" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets left="-200.0" top="250.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="updateBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#update" prefHeight="42.0" prefWidth="208.0" style="-fx-background-color: #c4965a; -fx-background-radius: 10; -fx-border-radius: 10;" text="Update  Customer" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="-200.0" top="250.0" />
+                     </StackPane.margin>
+                  </Button>
                </children>
             </StackPane>
          </children>

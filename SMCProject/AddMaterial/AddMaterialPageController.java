@@ -4,6 +4,8 @@
  */
 package smcproject.AddMaterial;
 
+
+import javafx.scene.control.ComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -22,6 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import smcproject.AddNewCustomer.AddCustomerModel;
 import smcproject.AddNewCustomer.AddCutomerService;
+import smcproject.InventoryPage.InventoryModel;
+import smcproject.ScreenScaler;
 
 /**
  * FXML Controller class
@@ -38,30 +44,43 @@ public class AddMaterialPageController implements Initializable {
     @FXML
     private TextField unit;
     @FXML
-    private TextArea stock;
+    private TextField stock;
     @FXML
-    private TextArea status;
+    private ComboBox<String> status;
     @FXML
     private Label orderId;
     @FXML
     private Label message;
+    @FXML
+    private Button updateBtn;
 
-    /**
-     * Initializes the controller class.
-     */
+    private InventoryModel selectedMaterial;
+    @FXML
+    private Button addBtn;
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        
+        status.getItems().addAll(
+                "Available",
+                "Low Stock",
+                "Out of Stock"
+        );
+        status.setValue("Available");
+        updateBtn.setVisible(false);
+
+        updateBtn.setManaged(false);
     }    
     
     @FXML
-    private void addProduct(ActionEvent event) throws ClassNotFoundException, SQLException 
+    private void addProduct(ActionEvent event) throws ClassNotFoundException, SQLException, Exception 
     {
         String mateName = materialName.getText();
         String cate = category.getText();
         String units = unit.getText();
         int stocks = Integer.parseInt(stock.getText());
-        String stat = status.getText();
+        String stat = status.getValue();
         
         AddMaterialModel am = new AddMaterialModel(mateName, cate, units, stocks,stat);
         
@@ -69,6 +88,8 @@ public class AddMaterialPageController implements Initializable {
         String mes = as.addMaterial(am);
         
         message.setText(mes);    
+        
+        
     }
 
     @FXML
@@ -88,7 +109,24 @@ public class AddMaterialPageController implements Initializable {
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException
+    {
+        Parent root
+                = FXMLLoader.load(
+                        getClass().getResource(
+                                "/smcproject/Notification/NotificationPage.fxml"));
+
+        Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
     @FXML
@@ -266,6 +304,69 @@ public class AddMaterialPageController implements Initializable {
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+    
+    
+    
+    public void setData(InventoryModel im) {
+        selectedMaterial = im;
+
+        materialName.setText(im.getMaterial_name());
+
+        category.setText(im.getCategory());
+
+        unit.setText(im.getUnit());
+
+        stock.setText(String.valueOf(im.getStock()));
+
+        status.setValue(im.getStatus());
+
+        addBtn.setVisible(false);
+
+        addBtn.setManaged(false);
+
+        updateBtn.setVisible(true);
+
+        updateBtn.setManaged(true);
+    }
+
+    @FXML
+    private void update(ActionEvent event) 
+    {
+        try {
+            AddMaterialModel am
+                    = new AddMaterialModel(
+                            selectedMaterial.getId(),
+                            materialName.getText(),
+                            category.getText(),
+                            unit.getText(),
+                            Integer.parseInt(stock.getText()),
+                            status.getValue());
+
+            AddMaterialService as
+                    = new AddMaterialService();
+
+            String msg
+                    = as.updateMaterial(am);
+
+            message.setText(msg);
+
+            Parent root
+                    = FXMLLoader.load(
+                            getClass().getResource(
+                                    "/smcproject/InventoryPage/InventoryPage.fxml"));
+
+            Stage stage
+                    = (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }

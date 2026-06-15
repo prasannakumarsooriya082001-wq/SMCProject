@@ -19,13 +19,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.AddNewCustomer.AddNewCustomerPageController;
 import smcproject.ProductsPage.ProductsModel;
 import smcproject.ProductsPage.ProductsPageController;
+import smcproject.ProductsPage.ProductsService;
+import smcproject.ScreenScaler;
 
 /**
  * FXML Controller class
@@ -46,6 +50,10 @@ public class CustomerPageController implements Initializable {
     private TableColumn<CustomerModel, String> orders;
     @FXML
     private TableView<CustomerModel> tableview;
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private Button updateBtn;
 
    
     @FXML
@@ -238,6 +246,25 @@ public class CustomerPageController implements Initializable {
         {searchItem();
         });
         
+        
+        //update or delete
+        updateBtn.setDisable(true);
+
+        deleteBtn.setDisable(true);
+        
+        
+        //listener
+        tableview.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldSelection, newSelection)
+                        -> {
+                    if (newSelection != null) {
+                        updateBtn.setDisable(false);
+
+                        deleteBtn.setDisable(false);
+                    }
+                });
+        
     }    
 
     @FXML
@@ -257,7 +284,24 @@ public class CustomerPageController implements Initializable {
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException 
+    {
+        Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
     @FXML
@@ -301,6 +345,67 @@ public class CustomerPageController implements Initializable {
     {
         searchProduct.clear();      // search box clear
         tableview.setItems(originalList); // full data again show
+    }
+
+    @FXML
+    private void delete(ActionEvent event) 
+    {
+        try {
+            CustomerModel selected
+                    = tableview.getSelectionModel()
+                            .getSelectedItem();
+
+            if (selected != null) {
+                CustomerService ps
+                        = new CustomerService();
+
+                ps.deleteProduct(
+                        selected.getCustomerId());
+
+                tableview.getItems()
+                        .remove(selected);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void update(ActionEvent event)
+    {
+        try {
+            CustomerModel selected
+                    = tableview.getSelectionModel()
+                            .getSelectedItem();
+
+            if (selected == null) {
+                return;
+            }
+
+            FXMLLoader loader
+                    = new FXMLLoader(
+                            getClass().getResource(
+                                    "/smcproject/AddNewCustomer/AddNewCustomerPage.fxml"));
+
+            Parent root
+                    = loader.load();
+
+            AddNewCustomerPageController controller
+                    = loader.getController();
+
+            controller.setData(selected);
+
+            Stage stage
+                    = (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     

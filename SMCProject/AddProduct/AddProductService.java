@@ -5,6 +5,7 @@
 package smcproject.AddProduct;
 
 import java.sql.SQLException;
+import smcproject.Notification.NotificationService;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.sql.SQLException;
  */
 public class AddProductService 
 {
-    public String createuser(AddProductModel am) throws ClassNotFoundException, SQLException
+    public String createuser(AddProductModel am) throws ClassNotFoundException, SQLException, Exception
     {
         AddProductDAO ad = new AddProductDAO();
 
@@ -28,11 +29,33 @@ public class AddProductService
             int result = ad.insertProduct(am);
             if (result > 0)
             {
+                NotificationService ns
+                        = new NotificationService();
+
+                ns.addNotification(
+                        "New Product Added : "
+                        + am.getProductName());
                 return "Product Added...";
             } else 
             {
                 return "Product Not Added!";
             }
         }        
+    }
+    
+    
+    public String updateProduct(AddProductModel am)
+            throws Exception {
+        AddProductDAO ad
+                = new AddProductDAO();
+
+        int result
+                = ad.updateProduct(am);
+
+        if (result > 0) {
+            return "Updated";
+        } else {
+            return "Not Updated";
+        }
     }
 }

@@ -21,4 +21,23 @@ public class ProductsService
         List list = pd.Productstable();
         return list;
     }
+    
+    public String deleteProduct(int id)
+        throws Exception
+{
+    ProductsDAO pd =
+    new ProductsDAO();
+
+    int result =
+    pd.deleteMaterial(id);
+
+    if(result > 0)
+    {
+        return "Deleted";
+    }
+    else
+    {
+        return "Not Deleted";
+    }
+}
 }

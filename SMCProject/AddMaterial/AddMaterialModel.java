@@ -10,6 +10,7 @@ package smcproject.AddMaterial;
  */
 public class AddMaterialModel 
 {
+    private int id;
     private String materialName;
     private String category;
     private String unit;
@@ -26,6 +27,16 @@ public class AddMaterialModel
         this.stock = stock;
         this.status = status;
     }
+
+    public AddMaterialModel(int id, String materialName, String category, String unit, int stock, String status) {
+        this.id = id;
+        this.materialName = materialName;
+        this.category = category;
+        this.unit = unit;
+        this.stock = stock;
+        this.status = status;
+    }
+    
 
     public String getStatus() {
         return status;
@@ -65,6 +76,14 @@ public class AddMaterialModel
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

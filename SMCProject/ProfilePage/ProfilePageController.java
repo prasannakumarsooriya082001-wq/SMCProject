@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import smcproject.ScreenScaler;
 import smcproject.Session;
 
 /**
@@ -110,7 +111,7 @@ public class ProfilePageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -163,7 +164,7 @@ public class ProfilePageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -216,7 +217,6 @@ public class ProfilePageController implements Initializable {
         (Stage)((Node)event.getSource())
         .getScene()
         .getWindow();
-
         stage.setScene(new Scene(root));
         stage.show();
     }

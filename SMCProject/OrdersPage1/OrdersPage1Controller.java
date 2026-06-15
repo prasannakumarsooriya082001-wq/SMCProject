@@ -20,13 +20,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.AddOrder.AddOrderPageController;
+import smcproject.CustomerPage.CustomerModel;
 import smcproject.CustomerPage.CustomerPageController;
+import smcproject.CustomerPage.CustomerService;
 import smcproject.ProductsPage.ProductsModel;
+import smcproject.ScreenScaler;
 
 /**
  * FXML Controller class
@@ -49,10 +54,15 @@ public class OrdersPage1Controller implements Initializable {
     private TableColumn<OrdersModel, String> status;
     @FXML
     private TableView<OrdersModel> orderTable;
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private Button updateBtn;
     
     private OrdersService os = new OrdersService();
     
     ObservableList<OrdersModel> originalList = FXCollections.observableArrayList();
+    
 
     @FXML
     private void dashboardBtn1(ActionEvent event)
@@ -241,6 +251,25 @@ public class OrdersPage1Controller implements Initializable {
         searchProduct.textProperty().addListener((obs, oldValue, newValue) -> 
         {searchItem();
         });
+        
+        
+        //update or delete
+        updateBtn.setDisable(true);
+
+        deleteBtn.setDisable(true);
+        
+        
+        //listener
+        orderTable.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldSelection, newSelection)
+                        -> {
+                    if (newSelection != null) {
+                        updateBtn.setDisable(false);
+
+                        deleteBtn.setDisable(false);
+                    }
+                });
     }    
 
     @FXML
@@ -260,7 +289,24 @@ public class OrdersPage1Controller implements Initializable {
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException 
+    {
+        Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
 
@@ -301,6 +347,64 @@ public class OrdersPage1Controller implements Initializable {
         }
 
         orderTable.setItems(filteredList);
+    }
+
+    @FXML
+    private void delete(ActionEvent event) 
+    {
+        try {
+            OrdersModel selected
+                    = orderTable.getSelectionModel()
+                            .getSelectedItem();
+
+            if (selected != null) {
+                OrdersService os = new  OrdersService();
+
+                os.deleteProduct(
+                        selected.getOrderId());
+
+                orderTable.getItems()
+                        .remove(selected);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void update(ActionEvent event) {
+        try {
+            OrdersModel selected
+                    = orderTable.getSelectionModel()
+                            .getSelectedItem();
+
+            if (selected == null) {
+                return;
+            }
+
+            FXMLLoader loader
+                    = new FXMLLoader(
+                            getClass().getResource(
+                                    "/smcproject/AddOrder/AddOrderPage.fxml"));
+
+            Parent root = loader.load();
+
+            AddOrderPageController controller
+                    = loader.getController();
+
+            controller.setData(selected);
+
+            Stage stage
+                    = (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     

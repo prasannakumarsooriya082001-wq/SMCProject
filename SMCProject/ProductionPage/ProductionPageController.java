@@ -29,6 +29,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import smcproject.CustomerPage.CustomerPageController;
+import smcproject.ScreenScaler;
 
 /**
  * FXML Controller class
@@ -83,7 +84,7 @@ public class ProductionPageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -153,7 +154,7 @@ public class ProductionPageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -249,12 +250,29 @@ public class ProductionPageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException
+    {
+        Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
     

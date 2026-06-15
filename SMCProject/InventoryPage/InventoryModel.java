@@ -10,6 +10,7 @@ package smcproject.InventoryPage;
  */
 public class InventoryModel 
 {
+    private int id;
     private String material_name;
     private String category ;
     private String unit ;
@@ -65,6 +66,14 @@ public class InventoryModel
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

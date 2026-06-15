@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class AddOrderModel 
 {
-    
+    private int orderId;
     private int customerId;
     private int productId;
     private int quantity;
@@ -31,6 +31,17 @@ public class AddOrderModel
         this.status = status;
         this.oDate = oDate;
     }
+
+    public AddOrderModel(int orderId, int customerId, int productId, int quantity, double amount, String status, LocalDate oDate) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.amount = amount;
+        this.status = status;
+        this.oDate = oDate;
+    }
+    
 
     
 
@@ -83,6 +94,14 @@ public class AddOrderModel
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
     
     

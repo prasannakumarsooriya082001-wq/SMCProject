@@ -6,6 +6,7 @@ package smcproject.InventoryPage;
 
 import java.sql.SQLException;
 import java.util.List;
+import smcproject.OrdersPage1.OrdersDAO;
 
 /**
  *
@@ -19,6 +20,22 @@ public class InventoryService
     {
         List list = id.materials();
         return list;
+    }
+    
+    
+    public String deleteProduct(String name)
+            throws Exception {
+        InventoryDAO pd
+                = new InventoryDAO();
+
+        int result
+                = pd.deleteMaterial(name);
+
+        if (result > 0) {
+            return "Deleted";
+        } else {
+            return "Not Deleted";
+        }
     }
     
 }

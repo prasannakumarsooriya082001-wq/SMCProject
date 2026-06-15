@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,6 +28,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import smcproject.AddProduct.AddProductController;
+import smcproject.AddProduct.AddProductModel;
+import smcproject.ScreenScaler;
 
 /**
  * FXML Controller class
@@ -51,11 +55,15 @@ public class ProductsPageController implements Initializable {
     private TableView<ProductsModel> productTable;
     @FXML
     private TableColumn<ProductsModel, Integer> productID;
-    
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private Button updateBtn;
     
     private ProductsService ps = new ProductsService();
     
     ObservableList<ProductsModel> originalList = FXCollections.observableArrayList();
+    
    
     
     @Override
@@ -83,6 +91,26 @@ public class ProductsPageController implements Initializable {
         searchProduct.textProperty().addListener((obs, oldValue, newValue) -> 
         {searchItem();
         });
+        
+        
+        
+        //update or delete
+        updateBtn.setDisable(true);
+
+        deleteBtn.setDisable(true);
+        
+        
+        //listener
+        productTable.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldSelection, newSelection)
+                        -> {
+                    if (newSelection != null) {
+                        updateBtn.setDisable(false);
+
+                        deleteBtn.setDisable(false);
+                    }
+                });
 
     } 
     
@@ -182,7 +210,7 @@ public void clearSearch()
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -254,7 +282,7 @@ public void clearSearch()
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -290,24 +318,34 @@ public void clearSearch()
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException
+    {
+        Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
 
 
 
-    @FXML
-    private void menu1(ActionEvent event) {
-    }
-
-    @FXML
-    private void menu2(ActionEvent event) {
-    }
 
     @FXML
     private void addProduct(ActionEvent event) throws IOException 
@@ -325,10 +363,64 @@ public void clearSearch()
         stage.show();
     }
 
+    @FXML
+    private void delete(ActionEvent event) 
+    {
+         try {
+            ProductsModel selected
+                    = productTable.getSelectionModel()
+                            .getSelectedItem();
 
+            if (selected != null) {
+                ProductsService ps
+                        = new ProductsService();
 
+                ps.deleteProduct(
+                        selected.getProductId());
 
+                productTable.getItems()
+                        .remove(selected);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    @FXML
+    private void update(ActionEvent event) 
+    {
+        try 
+        {
+            ProductsModel selected
+                    = productTable.getSelectionModel()
+                            .getSelectedItem();
 
+            if (selected == null) {
+                return;
+            }
+            
+            FXMLLoader loader
+                    = new FXMLLoader(
+                            getClass().getResource(
+                                    "/smcproject/AddProduct/AddProduct.fxml"));
+
+            Parent root = loader.load();
+
+            AddProductController controller
+                    = loader.getController();
+
+            controller.setData(selected);
+
+            Stage stage
+                    = new Stage();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     
 }

@@ -10,6 +10,7 @@ package smcproject.AddNewCustomer;
  */
 public class AddCustomerModel 
 {
+    private int id;
     private String customerName;
     private String phoneNumber;
     private String email;
@@ -24,6 +25,15 @@ public class AddCustomerModel
         this.email = email;
         this.address = address;
     }
+
+    public AddCustomerModel(int id, String customerName, String phoneNumber, String email, String address) {
+        this.id = id;
+        this.customerName = customerName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
+    
 
     public String getAddress() {
         return address;
@@ -55,6 +65,14 @@ public class AddCustomerModel
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

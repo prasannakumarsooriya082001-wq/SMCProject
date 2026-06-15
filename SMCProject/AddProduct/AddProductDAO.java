@@ -34,4 +34,29 @@ public class AddProductDAO
         
         return result;
     }
+    
+    public int updateProduct(AddProductModel am)
+            throws Exception 
+    {
+        Connection conn = dbConnection();
+        String query
+                = "update product set product_name=?, category=?, price=?, stock=?, status=? where product_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setString(1, am.getProductName());
+
+        ps.setString(2, am.getCategory());
+
+        ps.setDouble(3, am.getPrice());
+
+        ps.setInt(4, am.getStock());
+
+        ps.setString(5, am.getStatus());
+
+        ps.setInt(6, am.getId());
+
+        return ps.executeUpdate();
+    }
 }

@@ -1,31 +1,52 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package smcproject.OrdersPage1;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author PRASANNA KUMAR
- */
-public class OrdersModel 
+public class OrdersModel
 {
     private int orderId;
+
+    private int customerId;
+
+    private int productId;
+
+    private int quantity;
+
     private String customerName;
+
     private double amount;
+
     private LocalDate orderDate;
+
     private String status;
 
     public OrdersModel() {
     }
 
-    public OrdersModel(int orderId, String customerName, double amount, LocalDate orderDate, String status) {
+    public OrdersModel(
+            int orderId,
+            int customerId,
+            int productId,
+            int quantity,
+            String customerName,
+            double amount,
+            LocalDate orderDate,
+            String status)
+    {
         this.orderId = orderId;
+
+        this.customerId = customerId;
+
+        this.productId = productId;
+
+        this.quantity = quantity;
+
         this.customerName = customerName;
+
         this.amount = amount;
+
         this.orderDate = orderDate;
+
         this.status = status;
     }
 
@@ -35,6 +56,30 @@ public class OrdersModel
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getCustomerName() {
@@ -68,7 +113,4 @@ public class OrdersModel
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
-    
 }

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import smcproject.AddNewCustomer.AddCustomerModel;
 import smcproject.ProductsPage.ProductsModel;
 
 /**
@@ -37,22 +38,72 @@ public class CustomerDAO
         
         List list = new ArrayList();
         
-        PreparedStatement psmt = conn.prepareStatement("SELECT c.customer_name, c.phone, c.email, c.address,COUNT(o.order_id) AS orders FROM customer c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_id, c.customer_name, c.phone, c.email, c.address  ORDER BY c.customer_id");
+        PreparedStatement psmt = conn.prepareStatement("SELECT c.customer_id,c.customer_name, c.phone, c.email, c.address,COUNT(o.order_id) AS orders FROM customer c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_id, c.customer_name, c.phone, c.email, c.address  ORDER BY c.customer_id");
         ResultSet rs = psmt.executeQuery();
         
         while(rs.next())
         {
             CustomerModel cs =new CustomerModel();
-            
+            cs.setCustomerId(rs.getInt("customer_id"));
             cs.setCustomerName(rs.getString("customer_name"));
             cs.setPhone(rs.getString("phone"));
             cs.setEmail(rs.getString("email"));
             cs.setOrders(rs.getInt("orders"));
+            cs.setAddress(rs.getString("address"));
 
             list.add(cs);
             
         }
         return list;
+    }
+    
+    
+    public int deleteMaterial(int id)
+            throws Exception 
+    {
+        Connection conn = dbConnection();
+        
+        String query
+                = "delete from customer where customer_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setInt(1, id);
+
+        return ps.executeUpdate();
+    }
+    
+    
+    
+    public int updateCustomer(
+            AddCustomerModel am)
+            throws Exception {
+        Connection conn
+                = dbConnection();
+
+        String query
+                = "update customer set customer_name=?, phone=?, email=?, address=? where customer_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setString(1,
+                am.getCustomerName());
+
+        ps.setString(2,
+                am.getPhoneNumber());
+
+        ps.setString(3,
+                am.getEmail());
+
+        ps.setString(4,
+                am.getAddress());
+
+        ps.setInt(5,
+                am.getId());
+
+        return ps.executeUpdate();
     }
     
 }

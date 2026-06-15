@@ -43,7 +43,7 @@ public class InventoryDAO
         while(rs.next())
         {
             InventoryModel im = new InventoryModel();
-            
+            im.setId(rs.getInt("material_id"));
             im.setMaterial_name(rs.getString("material_name"));
             im.setCategory(rs.getString("category"));
             im.setUnit(rs.getString("unit"));
@@ -54,6 +54,23 @@ public class InventoryDAO
             
         }
         return list;
+    }
+    
+    
+    public int deleteMaterial(String name)
+            throws Exception 
+    {
+        Connection conn = dbConnection();
+        
+        String query
+                = "delete from materials where material_name=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setString(1, name);
+
+        return ps.executeUpdate();
     }
     
 }

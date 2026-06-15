@@ -45,4 +45,30 @@ public class AddMaterialDAO
         
         return result;
     }
+    
+    
+    public int updateMaterial(AddMaterialModel am)
+            throws Exception {
+        Connection conn = dbConnection();
+
+        String query
+                = "update materials set material_name=?, category=?, unit=?, stock=?, status=? where material_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setString(1, am.getMaterialName());
+
+        ps.setString(2, am.getCategory());
+
+        ps.setString(3, am.getUnit());
+
+        ps.setInt(4, am.getStock());
+
+        ps.setString(5, am.getStatus());
+
+        ps.setInt(6, am.getId());
+
+        return ps.executeUpdate();
+    }
 }

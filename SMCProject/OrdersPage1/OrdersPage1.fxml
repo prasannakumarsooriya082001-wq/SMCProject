@@ -426,6 +426,16 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="deleteBtn" layoutX="539.0" layoutY="377.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updateBtn" layoutX="686.0" layoutY="377.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="Update" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

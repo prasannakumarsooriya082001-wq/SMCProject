@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import smcproject.ScreenScaler;
 import smcproject.Session;
 
 /**
@@ -55,10 +56,7 @@ public class Loginpage1Controller implements Initializable {
         .getScene()
         .getWindow();
 
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-
+        stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -115,7 +113,7 @@ public class Loginpage1Controller implements Initializable {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             stage.setScene(new Scene(root));
-            stage.show();          
+            stage.show();        
         }
         else if(res == 0)
         {

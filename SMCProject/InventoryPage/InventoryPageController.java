@@ -19,12 +19,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import smcproject.AddMaterial.AddMaterialPageController;
 import smcproject.CustomerPage.CustomerPageController;
+import smcproject.OrdersPage1.OrdersModel;
+import smcproject.OrdersPage1.OrdersService;
+import smcproject.ScreenScaler;
 
 /**
  * FXML Controller class
@@ -47,6 +52,10 @@ public class InventoryPageController implements Initializable {
     private TableView<InventoryModel> inventoryTable;
     
     private InventoryService is = new InventoryService();
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private Button updateBtn;
 
     
     @FXML
@@ -204,7 +213,7 @@ public class InventoryPageController implements Initializable {
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -231,6 +240,26 @@ public class InventoryPageController implements Initializable {
         
         
         inventoryTable.setItems(ol);
+        
+        
+        
+        //update or delete
+        updateBtn.setDisable(true);
+
+        deleteBtn.setDisable(true);
+        
+        
+        //listener
+        inventoryTable.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldSelection, newSelection)
+                        -> {
+                    if (newSelection != null) {
+                        updateBtn.setDisable(false);
+
+                        deleteBtn.setDisable(false);
+                    }
+                });
     }    
 
     @FXML
@@ -250,7 +279,24 @@ public class InventoryPageController implements Initializable {
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException 
+    {
+         Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage notificationStage = new Stage();
+
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
     @FXML
@@ -267,6 +313,66 @@ public class InventoryPageController implements Initializable {
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void delete(ActionEvent event) 
+    {
+        try {
+            InventoryModel selected
+                    = inventoryTable.getSelectionModel()
+                            .getSelectedItem();
+
+            if (selected != null) {
+                InventoryService os = new InventoryService();
+
+                os.deleteProduct(
+                        selected.getMaterial_name());
+
+                inventoryTable.getItems()
+                        .remove(selected);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void update(ActionEvent event) 
+    {
+        
+        try {
+            InventoryModel selected
+                    = inventoryTable.getSelectionModel()
+                            .getSelectedItem();
+
+            if (selected == null) {
+                return;
+            }
+
+            FXMLLoader loader
+                    = new FXMLLoader(
+                            getClass().getResource(
+                                    "/smcproject/AddMaterial/AddMaterialPage.fxml"));
+
+            Parent root = loader.load();
+
+            AddMaterialPageController controller
+                    = loader.getController();
+
+            controller.setData(selected);
+
+            Stage stage
+                    = (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     

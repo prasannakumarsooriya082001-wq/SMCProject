@@ -327,7 +327,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/ethics.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="5.0" top="1.0" />
@@ -365,7 +365,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/product.png" />
+                                    <Image url="@../images/success.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />
@@ -403,7 +403,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/hourglass.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />
@@ -441,7 +441,7 @@
                            <children>
                               <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/check-mark.png" />
+                                    <Image url="@../images/data-analytics.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets top="1.0" />

@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class AddProductModel 
 {
-    
+    private int id;
     private String productName;
     private String category;
     private double price;
@@ -30,6 +30,15 @@ public class AddProductModel
         this.stock = stock;
         this.status = status;
         
+    }
+
+    public AddProductModel(int id, String productName, String category, double price, int stock, String status) {
+        this.id = id;
+        this.productName = productName;
+        this.category = category;
+        this.price = price;
+        this.stock = stock;
+        this.status = status;
     }
 
     
@@ -72,6 +81,14 @@ public class AddProductModel
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     

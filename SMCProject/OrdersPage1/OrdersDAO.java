@@ -37,22 +37,45 @@ public class OrdersDAO
         
         List list = new ArrayList();
         
-        PreparedStatement psmt = conn.prepareStatement("SELECT o.order_id, c.customer_name, o.amount, o.order_date ,o.status  FROM orders o JOIN customer c ON o.customer_id = c.customer_id ORDER BY c.customer_id");
+        PreparedStatement psmt = conn.prepareStatement("SELECT o.order_id,o.customer_id,o.product_id,o.quantity, c.customer_name, o.amount, o.order_date ,o.status  FROM orders o JOIN customer c ON o.customer_id = c.customer_id ORDER BY c.customer_id");
         ResultSet rs = psmt.executeQuery();
         
         while(rs.next())
         {
             OrdersModel om = new OrdersModel();
             
+            
             om.setOrderId(rs.getInt("order_id"));
             om.setCustomerName(rs.getString("customer_name"));
             om.setAmount(rs.getDouble("amount"));
             om.setOrderDate(rs.getDate("order_date").toLocalDate());
             om.setStatus(rs.getString("status"));
+
+            om.setCustomerId(rs.getInt("customer_id"));
+            om.setProductId(rs.getInt("product_id"));
+            om.setQuantity(rs.getInt("quantity"));
             
             list.add(om);
             
         }
         return list;
+    }
+    
+    
+    
+    public int deleteMaterial(int id)
+            throws Exception 
+    {
+        Connection conn = dbConnection();
+        
+        String query
+                = "delete from orders where order_id=?";
+
+        PreparedStatement ps
+                = conn.prepareStatement(query);
+
+        ps.setInt(1, id);
+
+        return ps.executeUpdate();
     }
 }

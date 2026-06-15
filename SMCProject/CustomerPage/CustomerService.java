@@ -6,6 +6,7 @@ package smcproject.CustomerPage;
 
 import java.sql.SQLException;
 import java.util.List;
+import smcproject.ProductsPage.ProductsDAO;
 
 /**
  *
@@ -20,5 +21,24 @@ public class CustomerService
         List list = cd.customerTable();
         return list;
     }
+    
+    public String deleteProduct(int id)
+        throws Exception
+{
+    CustomerDAO pd =
+    new CustomerDAO();
+
+    int result =
+    pd.deleteMaterial(id);
+
+    if(result > 0)
+    {
+        return "Deleted";
+    }
+    else
+    {
+        return "Not Deleted";
+    }
+}
     
 }

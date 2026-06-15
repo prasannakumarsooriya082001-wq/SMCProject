@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -20,6 +22,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import smcproject.AddProduct.AddProductModel;
 import smcproject.AddProduct.AddProductService;
+import smcproject.OrdersPage1.OrdersModel;
+import smcproject.ScreenScaler;
 
 
 public class AddOrderPageController implements Initializable 
@@ -31,7 +35,7 @@ public class AddOrderPageController implements Initializable
     @FXML
     private TextField amount;
     @FXML
-    private TextField status;
+    private ComboBox<String> status;
     @FXML
     private Label message;
     @FXML
@@ -41,16 +45,29 @@ public class AddOrderPageController implements Initializable
     @FXML
     private TextField proId;
     
+    private OrdersModel selectedOrder;
+    @FXML
+    private Button updateBtn;
+    @FXML
+    private Button addBtn;
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        
+        status.getItems().addAll(
+                "Completed",
+                "In Progress",
+                "Pending"
+        );
+        status.setValue("Completed");
+        updateBtn.setVisible(false);
+
+        updateBtn.setManaged(false);
     }   
     
     @FXML
-    private void createOrder(ActionEvent event) throws ClassNotFoundException, SQLException 
+    private void createOrder(ActionEvent event) throws ClassNotFoundException, SQLException, Exception 
     {
         if (amount.getText().trim().isEmpty()
                 || quantity.getText().trim().isEmpty())
@@ -62,7 +79,7 @@ public class AddOrderPageController implements Initializable
         int proid = Integer.parseInt(proId.getText());
         int quan = Integer.parseInt(quantity.getText());
         double price = Double.parseDouble(amount.getText());    
-        String stat = status.getText();
+        String stat = status.getValue();
         LocalDate odate = orderDate.getValue();
         
         
@@ -81,17 +98,35 @@ public class AddOrderPageController implements Initializable
         FXMLLoader.load(
         getClass().getResource("/smcproject/ProfilePage/ProfilePage.fxml"));
 
-        Stage stage =
-        (Stage)((Node)event.getSource())
-        .getScene()
-        .getWindow();
+        Stage notificationStage = new Stage();
 
-        stage.setScene(new Scene(root));
-        stage.show();
+        notificationStage.setTitle("Notifications");
+
+        notificationStage.setScene(new Scene(root));
+
+        notificationStage.setWidth(400);
+
+        notificationStage.setHeight(600);
+
+        notificationStage.show();
     }
 
     @FXML
-    private void notify(ActionEvent event) {
+    private void notify(ActionEvent event) throws IOException 
+    {
+        Parent root =
+    FXMLLoader.load(
+    getClass().getResource(
+    "/smcproject/Notification/NotificationPage.fxml"));
+
+    Stage stage =
+    (Stage)((Node)event.getSource())
+    .getScene()
+    .getWindow();
+
+    stage.setScene(new Scene(root));
+
+    stage.show();
     }
 
     @FXML
@@ -107,7 +142,7 @@ public class AddOrderPageController implements Initializable
         .getScene()
         .getWindow();
 
-        stage.setScene(new Scene(root));
+       stage.setScene(new Scene(root));
         stage.show();
     }
     
@@ -271,4 +306,73 @@ public class AddOrderPageController implements Initializable
         stage.show();
     }
     
+    
+    
+    public void setData(OrdersModel om) {
+        selectedOrder = om;
+
+        cusId.setText(
+                String.valueOf(om.getCustomerId()));
+
+        proId.setText(
+                String.valueOf(om.getProductId()));
+
+        quantity.setText(
+                String.valueOf(om.getQuantity()));
+
+        amount.setText(
+                String.valueOf(om.getAmount()));
+
+        status.setValue(
+                om.getStatus());
+
+        orderDate.setValue(
+                om.getOrderDate());
+
+        addBtn.setVisible(false);
+
+        updateBtn.setVisible(true);
+
+        updateBtn.setManaged(true);
+    }
+
+    @FXML
+    private void update(ActionEvent event) {
+        try {
+            AddOrderModel am
+                    = new AddOrderModel(
+                            selectedOrder.getOrderId(),
+                            Integer.parseInt(cusId.getText()),
+                            Integer.parseInt(proId.getText()),
+                            Integer.parseInt(quantity.getText()),
+                            Double.parseDouble(amount.getText()),
+                            status.getValue(),
+                            orderDate.getValue());
+
+            AddOrderService as
+                    = new AddOrderService();
+
+            String msg
+                    = as.updateOrder(am);
+
+            message.setText(msg);
+
+            Parent root
+                    = FXMLLoader.load(
+                            getClass().getResource(
+                                    "/smcproject/OrdersPage1/OrdersPage1.fxml"));
+
+            Stage stage
+                    = (Stage) ((Node) event.getSource())
+                            .getScene()
+                            .getWindow();
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import smcproject.ForgotPasswordPage.ForgotPasswordModel;
+import smcproject.ScreenScaler;
 
 
 public class PasswordPageController implements Initializable 
@@ -72,7 +73,7 @@ public class PasswordPageController implements Initializable
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             stage.setScene(new Scene(root));
-            stage.show();
+        stage.show();
         }
         else if(res == 0)
         {

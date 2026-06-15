@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -377,27 +375,9 @@
                   <Insets left="31.0" top="12.0" />
                </VBox.margin>
             </Label>
-            <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#menu1" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="All Categories">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-               <VBox.margin>
-                  <Insets left="350.0" top="28.0" />
-               </VBox.margin>
-            </MenuButton>
-            <MenuButton maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#menu2" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: ffffff; -fx-background-radius: 10; -fx-border-radius: 10;" text="All Status">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
-               <VBox.margin>
-                  <Insets left="487.0" top="-34.0" />
-               </VBox.margin>
-            </MenuButton>
             <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addProduct" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="+    Add Product" textFill="WHITE">
                <VBox.margin>
-                  <Insets left="800.0" top="-32.0" />
+                  <Insets left="800.0" top="6.0" />
                </VBox.margin>
                <font>
                   <Font size="18.0" />
@@ -423,7 +403,7 @@
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets left="29.0" top="-42.0" />
+                  <Insets left="29.0" top="-6.0" />
                </VBox.margin>
             </HBox>
             
@@ -447,6 +427,16 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="deleteBtn" layoutX="658.0" layoutY="377.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" prefHeight="40.0" prefWidth="124.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updateBtn" layoutX="806.0" layoutY="377.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="124.0" style="-fx-background-color: #c4965a; -fx-border-radius: 12; -fx-background-radius: 12;" text="Update" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
